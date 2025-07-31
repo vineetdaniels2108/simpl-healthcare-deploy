@@ -1,0 +1,23 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+        <rect width="800" height="600" fill="#f0f8ff"/>
+        <rect x="50" y="50" width="700" height="500" fill="#ffffff" stroke="#1aa484" stroke-width="2" rx="10"/>
+        <text x="400" y="120" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#1aa484" text-anchor="middle">Security Architecture</text>
+        <text x="400" y="150" font-family="Arial, sans-serif" font-size="16" fill="#666" text-anchor="middle">Enterprise-Grade Protection</text>
+        
+        <!-- Security layers -->
+        <rect x="150" y="200" width="500" height="60" fill="#e8f5e8" stroke="#1aa484" stroke-width="2" rx="5"/>
+        <text x="400" y="235" font-family="Arial, sans-serif" font-size="14" fill="#1aa484" text-anchor="middle">Zero-Trust Authentication Layer</text>
+        
+        <rect x="180" y="280" width="440" height="60" fill="#e0f2f1" stroke="#1aa484" stroke-width="1" rx="5"/>
+        <text x="400" y="315" font-family="Arial, sans-serif" font-size="14" fill="#1aa484" text-anchor="middle">AES-256 Encryption (Rest & Transit)</text>
+        
+        <rect x="210" y="360" width="380" height="60" fill="#c8e6c9" stroke="#1aa484" stroke-width="1" rx="5"/>
+        <text x="400" y="395" font-family="Arial, sans-serif" font-size="14" fill="#1aa484" text-anchor="middle">HIPAA & SOC 2 Type II Compliance</text>
+        
+        <!-- Shield icons -->
+        <circle cx="120" cy="230" r="15" fill="#1aa484"/>
+        <text x="120" y="235" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">🛡</text>
+        
+        <circle cx="680" cy="310" r="15" fill="#1aa484"/>
+        <text x="680" y="315" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">🔒</text>
+      </svg>

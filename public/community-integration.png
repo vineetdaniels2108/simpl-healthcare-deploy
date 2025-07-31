@@ -1,0 +1,33 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+        <rect width="800" height="600" fill="#f0f8ff"/>
+        <rect x="50" y="50" width="700" height="500" fill="#ffffff" stroke="#1aa484" stroke-width="2" rx="10"/>
+        <text x="400" y="120" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#1aa484" text-anchor="middle">Community Integration</text>
+        
+        <!-- Central hub -->
+        <circle cx="400" cy="300" r="60" fill="#1aa484" stroke="#0d5c3f" stroke-width="3"/>
+        <text x="400" y="305" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">Simpl</text>
+        <text x="400" y="320" font-family="Arial, sans-serif" font-size="12" fill="white" text-anchor="middle">Platform</text>
+        
+        <!-- Connected systems -->
+        <circle cx="200" cy="200" r="40" fill="#e8f5e8" stroke="#1aa484" stroke-width="2"/>
+        <text x="200" y="205" font-family="Arial, sans-serif" font-size="10" fill="#1aa484" text-anchor="middle">Provider</text>
+        <text x="200" y="220" font-family="Arial, sans-serif" font-size="10" fill="#1aa484" text-anchor="middle">Networks</text>
+        
+        <circle cx="600" cy="200" r="40" fill="#e8f5e8" stroke="#1aa484" stroke-width="2"/>
+        <text x="600" y="205" font-family="Arial, sans-serif" font-size="10" fill="#1aa484" text-anchor="middle">Claims</text>
+        <text x="600" y="220" font-family="Arial, sans-serif" font-size="10" fill="#1aa484" text-anchor="middle">Systems</text>
+        
+        <circle cx="200" cy="400" r="40" fill="#e8f5e8" stroke="#1aa484" stroke-width="2"/>
+        <text x="200" y="405" font-family="Arial, sans-serif" font-size="10" fill="#1aa484" text-anchor="middle">Quality</text>
+        <text x="200" y="420" font-family="Arial, sans-serif" font-size="10" fill="#1aa484" text-anchor="middle">Measures</text>
+        
+        <circle cx="600" cy="400" r="40" fill="#e8f5e8" stroke="#1aa484" stroke-width="2"/>
+        <text x="600" y="405" font-family="Arial, sans-serif" font-size="10" fill="#1aa484" text-anchor="middle">Community</text>
+        <text x="600" y="420" font-family="Arial, sans-serif" font-size="10" fill="#1aa484" text-anchor="middle">Resources</text>
+        
+        <!-- Connection lines -->
+        <line x1="240" y1="200" x2="360" y2="270" stroke="#1aa484" stroke-width="2"/>
+        <line x1="560" y1="200" x2="440" y2="270" stroke="#1aa484" stroke-width="2"/>
+        <line x1="240" y1="400" x2="360" y2="330" stroke="#1aa484" stroke-width="2"/>
+        <line x1="560" y1="400" x2="440" y2="330" stroke="#1aa484" stroke-width="2"/>
+      </svg>

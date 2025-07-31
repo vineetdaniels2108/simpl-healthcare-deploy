@@ -1,0 +1,40 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+        <rect width="800" height="600" fill="#f0f8ff"/>
+        <rect x="50" y="50" width="700" height="500" fill="#ffffff" stroke="#1aa484" stroke-width="2" rx="10"/>
+        <text x="400" y="120" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#1aa484" text-anchor="middle">Value Based Care Dashboard</text>
+        <text x="400" y="150" font-family="Arial, sans-serif" font-size="16" fill="#666" text-anchor="middle">Performance Analytics Dashboard</text>
+        
+        <!-- KPI Cards -->
+        <rect x="100" y="200" width="150" height="80" fill="#e8f5e8" stroke="#1aa484" stroke-width="1" rx="8"/>
+        <text x="175" y="225" font-family="Arial, sans-serif" font-size="12" fill="#1aa484" text-anchor="middle">Quality Score</text>
+        <text x="175" y="245" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#1aa484" text-anchor="middle">94.2</text>
+        <text x="175" y="265" font-family="Arial, sans-serif" font-size="10" fill="#666" text-anchor="middle">↗ +8.5%</text>
+        
+        <rect x="275" y="200" width="150" height="80" fill="#e8f5e8" stroke="#1aa484" stroke-width="1" rx="8"/>
+        <text x="350" y="225" font-family="Arial, sans-serif" font-size="12" fill="#1aa484" text-anchor="middle">Cost Reduction</text>
+        <text x="350" y="245" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#1aa484" text-anchor="middle">18%</text>
+        <text x="350" y="265" font-family="Arial, sans-serif" font-size="10" fill="#666" text-anchor="middle">vs Target</text>
+        
+        <rect x="450" y="200" width="150" height="80" fill="#e8f5e8" stroke="#1aa484" stroke-width="1" rx="8"/>
+        <text x="525" y="225" font-family="Arial, sans-serif" font-size="12" fill="#1aa484" text-anchor="middle">Member Satisfaction</text>
+        <text x="525" y="245" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#1aa484" text-anchor="middle">89%</text>
+        <text x="525" y="265" font-family="Arial, sans-serif" font-size="10" fill="#666" text-anchor="middle">4.2 ★ Rating</text>
+        
+        <!-- Chart area -->
+        <rect x="100" y="320" width="500" height="180" fill="#f8fffe" stroke="#1aa484" stroke-width="1" rx="8"/>
+        <text x="350" y="345" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1aa484" text-anchor="middle">Performance Trends</text>
+        
+        <!-- Mock line chart -->
+        <polyline points="120,450 180,420 240,400 300,390 360,380 420,370 480,360 540,350 580,340" 
+                  fill="none" stroke="#1aa484" stroke-width="3"/>
+        <polyline points="120,470 180,460 240,445 300,440 360,430 420,425 480,415 540,405 580,395" 
+                  fill="none" stroke="#0476a0" stroke-width="2" stroke-dasharray="5,5"/>
+        
+        <!-- Legend -->
+        <rect x="620" y="220" width="120" height="60" fill="#f8fffe" stroke="#ddd" stroke-width="1" rx="5"/>
+        <text x="680" y="240" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">Legend</text>
+        <line x1="640" y1="250" x2="660" y2="250" stroke="#1aa484" stroke-width="3"/>
+        <text x="665" y="255" font-family="Arial, sans-serif" font-size="10" fill="#333">Quality</text>
+        <line x1="640" y1="265" x2="660" y2="265" stroke="#0476a0" stroke-width="2" stroke-dasharray="3,3"/>
+        <text x="665" y="270" font-family="Arial, sans-serif" font-size="10" fill="#333">Cost</text>
+      </svg>

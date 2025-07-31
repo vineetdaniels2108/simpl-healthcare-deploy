@@ -1,0 +1,10 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1920" height="1080" fill="#f8f8f8"/>
+  <rect x="50" y="50" width="1820" height="980" fill="white" stroke="#1aa484" stroke-width="4" rx="20"/>
+  <text x="960" y="540" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#1aa484">Practice Management Dashboard</text>
+  <text x="960" y="600" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#666">Simpl Healthcare Platform</text>
+  <rect x="100" y="100" width="1720" height="50" fill="#1aa484" opacity="0.1" rx="8"/>
+  <rect x="100" y="180" width="800" height="300" fill="#1aa484" opacity="0.05" rx="12"/>
+  <rect x="920" y="180" width="900" height="300" fill="#1aa484" opacity="0.05" rx="12"/>
+  <rect x="100" y="500" width="1720" height="200" fill="#1aa484" opacity="0.03" rx="12"/>
+</svg>

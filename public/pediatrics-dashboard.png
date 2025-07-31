@@ -1,0 +1,28 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+      <rect width="800" height="600" fill="#f0f8ff"/>
+      <rect x="50" y="50" width="700" height="500" fill="#ffffff" stroke="#1aa484" stroke-width="2" rx="10"/>
+      <text x="400" y="150" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#1aa484" text-anchor="middle">Pediatrics Dashboard</text>
+      <text x="400" y="200" font-family="Arial, sans-serif" font-size="16" fill="#666" text-anchor="middle">EHR Dashboard Mockup</text>
+      
+      <!-- Mock dashboard elements -->
+      <rect x="100" y="250" width="200" height="100" fill="#e8f5e8" stroke="#1aa484" stroke-width="1" rx="5"/>
+      <text x="200" y="280" font-family="Arial, sans-serif" font-size="12" fill="#1aa484" text-anchor="middle">Patient Queue</text>
+      <text x="200" y="300" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#1aa484" text-anchor="middle">24</text>
+      <text x="200" y="320" font-family="Arial, sans-serif" font-size="10" fill="#666" text-anchor="middle">Active Patients</text>
+      
+      <rect x="320" y="250" width="200" height="100" fill="#e8f5e8" stroke="#1aa484" stroke-width="1" rx="5"/>
+      <text x="420" y="280" font-family="Arial, sans-serif" font-size="12" fill="#1aa484" text-anchor="middle">Appointments</text>
+      <text x="420" y="300" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#1aa484" text-anchor="middle">18</text>
+      <text x="420" y="320" font-family="Arial, sans-serif" font-size="10" fill="#666" text-anchor="middle">Today</text>
+      
+      <rect x="540" y="250" width="200" height="100" fill="#e8f5e8" stroke="#1aa484" stroke-width="1" rx="5"/>
+      <text x="640" y="280" font-family="Arial, sans-serif" font-size="12" fill="#1aa484" text-anchor="middle">Efficiency</text>
+      <text x="640" y="300" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#1aa484" text-anchor="middle">96%</text>
+      <text x="640" y="320" font-family="Arial, sans-serif" font-size="10" fill="#666" text-anchor="middle">Performance</text>
+      
+      <!-- Mock chart -->
+      <rect x="100" y="380" width="600" height="150" fill="#ffffff" stroke="#ddd" stroke-width="1" rx="5"/>
+      <text x="400" y="400" font-family="Arial, sans-serif" font-size="14" fill="#333" text-anchor="middle">Patient Flow Analytics</text>
+      <polyline points="120,480 200,450 280,420 360,440 440,400 520,380 600,360 680,340" 
+                fill="none" stroke="#1aa484" stroke-width="3"/>
+    </svg>
