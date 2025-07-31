@@ -56,3 +56,5 @@ logs
 # Cache files
 .cache
 .parcel-cache Videos/
+simpl-health.webflow/
+simpl-health.webflow.zip
