@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Manrope } from 'next/font/google'
 import './globals.css'
-import SoftLaunchBanner from '../components/SoftLaunchBanner'
 
 const manrope = Manrope({ 
   subsets: ['latin'],
@@ -43,7 +42,6 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.png" />
       </head>
       <body className={`${manrope.variable} font-manrope antialiased`}>
-        <SoftLaunchBanner />
         {children}
       </body>
     </html>

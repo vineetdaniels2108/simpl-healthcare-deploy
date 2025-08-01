@@ -9,7 +9,7 @@ const HeroSection = () => {
   const [showVideo, setShowVideo] = useState(false)
 
   return (
-    <section className="relative bg-gradient-to-br from-simpl-grey via-white to-simpl-green/5 pt-42 pb-16 md:pb-20 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-simpl-grey via-white to-simpl-green/5 pt-32 pb-16 md:pb-20 overflow-hidden">
       {/* Green Background Elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 right-20 w-96 h-96 bg-simpl-green rounded-full blur-3xl"></div>
