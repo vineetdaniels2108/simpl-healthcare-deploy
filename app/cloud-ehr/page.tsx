@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import PageTemplate from '../../components/PageTemplate'
-import { Cloud, FileText, Search, Brain, Stethoscope, Clock, Shield, Zap, CheckCircle, Play, Database, Activity } from 'lucide-react'
+import { Cloud, FileText, Search, Brain, Stethoscope, Clock, Shield, Zap, CheckCircle, Play, Database, Activity, Heart, CreditCard, Calendar } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Cloud EHR Made Simpl - Simpl Healthcare',
@@ -55,14 +55,29 @@ export default function CloudEHR() {
 
   const aiFeatures = [
     {
-      icon: <Brain className="w-8 h-8 text-simpl-green" />,
-      title: "AI Simpl Scribe",
-      description: "Dictate and capture patient conversations, automatically creating SOAP notes complete with medical codes."
+      icon: <FileText className="w-8 h-8 text-simpl-green" />,
+      title: "AI Notes",
+      description: "Notes written with the help of AI to ensure compliance with CMS and Auditor guidelines. Known to increase reimbursement and reduce denials."
     },
     {
-      icon: <Zap className="w-8 h-8 text-simpl-green" />,
+      icon: <Heart className="w-8 h-8 text-simpl-green" />,
+      title: "AI Facial",
+      description: "AI facial scan to measure vitals easily including HR, BR, HbA1c, Hb and Blood Pressure without additional equipment."
+    },
+    {
+      icon: <CreditCard className="w-8 h-8 text-simpl-green" />,
       title: "AI Billing Codes",
-      description: "Reduce time-consuming manual coding by leveraging Simpl AI technology to generate ICD, CPT and RxNorm codes on clinical notes."
+      description: "Use AI to suggest recommended ICD codes and add them to your note easily, reducing coding errors and improving accuracy."
+    },
+    {
+      icon: <Shield className="w-8 h-8 text-simpl-green" />,
+      title: "AI Compliance",
+      description: "Have a compliance score generated for your note once completed. If notes are not compliant then easily edit your notes."
+    },
+    {
+      icon: <Calendar className="w-8 h-8 text-simpl-green" />,
+      title: "AI Scheduling",
+      description: "AI scheduling to autofill appointments and make appointments more streamlined, reducing administrative overhead."
     }
   ]
 
@@ -171,18 +186,124 @@ export default function CloudEHR() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              {aiFeatures.map((feature, index) => (
-                <div key={index} className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {aiFeatures.slice(0, 3).map((feature, index) => (
+                <div key={index} className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
                   <div className="flex items-center mb-4">
                     {feature.icon}
-                    <h3 className="text-2xl font-bold ml-4">{feature.title}</h3>
+                    <h3 className="text-xl font-bold ml-4">{feature.title}</h3>
                   </div>
-                  <p className="text-lg text-white/90 leading-relaxed">
+                  <p className="text-base text-white/90 leading-relaxed">
                     {feature.description}
                   </p>
                 </div>
               ))}
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-6 mt-6 max-w-4xl mx-auto">
+              {aiFeatures.slice(3).map((feature, index) => (
+                <div key={index + 3} className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                  <div className="flex items-center mb-4">
+                    {feature.icon}
+                    <h3 className="text-xl font-bold ml-4">{feature.title}</h3>
+                  </div>
+                  <p className="text-base text-white/90 leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Smart Charting Section */}
+      <section className="py-20 bg-simpl-grey">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-simpl-black mb-6 font-manrope">
+              Smart Charting
+            </h2>
+            <p className="text-2xl text-simpl-green font-bold mb-4 font-manrope">
+              Simpl Healthcare Platform Powers Transformative Solutions
+            </p>
+            <p className="text-xl text-simpl-dark-grey max-w-4xl mx-auto font-manrope leading-relaxed">
+              Experience intelligent charting that adapts to your workflow, reduces documentation time, 
+              and ensures comprehensive patient records with every interaction.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-simpl-green rounded-xl flex items-center justify-center flex-shrink-0">
+                  <FileText className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-simpl-black mb-3 font-manrope">Intelligent Documentation</h3>
+                  <p className="text-lg text-simpl-dark-grey leading-relaxed">
+                    Smart templates that auto-populate based on patient history and condition, reducing repetitive data entry by up to 80%.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-simpl-green rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Clock className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-simpl-black mb-3 font-manrope">Real-Time Suggestions</h3>
+                  <p className="text-lg text-simpl-dark-grey leading-relaxed">
+                    Context-aware recommendations for diagnoses, treatments, and billing codes as you chart, ensuring accuracy and completeness.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-simpl-green rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Shield className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-simpl-black mb-3 font-manrope">Compliance Assurance</h3>
+                  <p className="text-lg text-simpl-dark-grey leading-relaxed">
+                    Built-in compliance checks ensure all documentation meets CMS requirements and audit standards automatically.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="bg-gradient-to-br from-simpl-green/5 to-simpl-blue/5 rounded-2xl p-8">
+                <div className="bg-white rounded-xl shadow-xl p-6">
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <h4 className="text-lg font-bold text-simpl-black">Patient Chart - John Smith</h4>
+                      <span className="px-3 py-1 bg-simpl-green/10 text-simpl-green rounded-full text-sm font-semibold">
+                        Auto-completing...
+                      </span>
+                    </div>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="w-5 h-5 text-simpl-green" />
+                        <span className="text-simpl-dark-grey">Chief Complaint: Hypertension follow-up</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="w-5 h-5 text-simpl-green" />
+                        <span className="text-simpl-dark-grey">Vitals: BP 140/90, HR 72, auto-populated</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="w-5 h-5 text-simpl-green" />
+                        <span className="text-simpl-dark-grey">Assessment: I10 (Essential hypertension) - suggested</span>
+                      </div>
+                    </div>
+                    <div className="mt-4 pt-4 border-t border-simpl-grey">
+                      <p className="text-sm text-simpl-dark-grey">
+                        <strong>AI Suggestion:</strong> Consider medication adherence review based on patient history
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

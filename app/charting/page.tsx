@@ -314,11 +314,11 @@ export default function Charting() {
             </div>
             
             <div className="bg-white rounded-2xl p-8 shadow-lg border border-simpl-green/10 hover:shadow-xl transition-shadow">
-              <h3 className="text-2xl font-bold text-simpl-black mb-4 font-manrope">Patient Engagement</h3>
+              <h3 className="text-2xl font-bold text-simpl-black mb-4 font-manrope">Telehealth</h3>
               <p className="text-lg text-simpl-dark-grey mb-6">
-                Share appropriate chart information with patients through secure portals and care plan communications.
+                Conduct seamless virtual visits with fully integrated EHR and charting capabilities for remote patient care.
               </p>
-              <a href="/patient-engagement" className="text-simpl-green font-semibold hover:text-simpl-dark-green transition-colors">
+              <a href="/telehealth" className="text-simpl-green font-semibold hover:text-simpl-dark-green transition-colors">
                 Learn More →
               </a>
             </div>

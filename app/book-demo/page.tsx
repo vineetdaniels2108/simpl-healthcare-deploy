@@ -1,207 +1,174 @@
-import type { Metadata } from 'next'
+'use client'
+
 import Navigation from '../../components/Navigation'
 import Footer from '../../components/Footer'
 import { Calendar, Clock, Users, CheckCircle } from 'lucide-react'
-
-export const metadata: Metadata = {
-  title: 'Book a Demo - Simpl Healthcare',
-  description: 'Schedule a personalized demo of Simpl Healthcare\'s AI-powered EHR platform and see how we can transform your practice.',
-}
+import { useEffect } from 'react'
 
 export default function BookDemo() {
+  useEffect(() => {
+    // Load Calendly widget script
+    const script = document.createElement('script')
+    script.src = 'https://assets.calendly.com/assets/external/widget.js'
+    script.async = true
+    document.body.appendChild(script)
+
+    return () => {
+      // Cleanup script on unmount
+      const existingScript = document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]')
+      if (existingScript) {
+        document.body.removeChild(existingScript)
+      }
+    }
+  }, [])
+
   return (
     <main>
       <Navigation />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-simpl-green via-simpl-green to-simpl-dark-green">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="pt-32 pb-20 bg-gradient-to-br from-simpl-green via-simpl-green to-simpl-dark-green relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 right-20 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-32 left-20 w-72 h-72 bg-white rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center text-white">
-            <h1 className="text-5xl md:text-6xl font-bold mb-8 font-manrope">
-              Book a <span className="text-white drop-shadow-lg">Demo</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto mb-12 leading-relaxed font-manrope">
-              Schedule a personalized demo of Simpl Healthcare's AI-powered EHR platform 
-              and discover how we can transform your practice workflow.
-            </p>
-            
-            {/* Benefits */}
-            <div className="grid md:grid-cols-3 gap-8 mb-16 max-w-5xl mx-auto">
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                <Clock className="w-8 h-8 text-white mb-4 mx-auto" />
-                <h3 className="text-xl font-bold mb-2">30-Minute Demo</h3>
-                <p className="text-white/80">Quick, focused overview tailored to your practice needs</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                <Users className="w-8 h-8 text-white mb-4 mx-auto" />
-                <h3 className="text-xl font-bold mb-2">Expert Guidance</h3>
-                <p className="text-white/80">Get insights from healthcare technology specialists</p>
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
-                <CheckCircle className="w-8 h-8 text-white mb-4 mx-auto" />
-                <h3 className="text-xl font-bold mb-2">Custom Solutions</h3>
-                <p className="text-white/80">See how Simpl adapts to your specific workflow</p>
-              </div>
+            <div className="inline-block px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full mb-6 border border-white/30">
+              <span className="text-white font-semibold text-lg">📅 Schedule Your Demo</span>
             </div>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 font-manrope leading-tight">
+              Book Your Personalized Demo
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90 leading-relaxed font-manrope mb-8 max-w-4xl mx-auto">
+              See how Simpl Healthcare's AI-powered EHR can transform your practice. Get a personalized 30-minute demo tailored to your specific needs.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Demo Form Section */}
+      {/* Main Content */}
       <section className="py-20 bg-gradient-to-br from-simpl-grey via-white to-simpl-green/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-3xl shadow-2xl p-10 md:p-12 border border-simpl-green/10">
-              <div className="text-center mb-10">
-                <h2 className="text-3xl md:text-4xl font-bold text-simpl-black mb-4 font-manrope">
-                  Schedule Your Demo
-                </h2>
-                <p className="text-lg text-simpl-dark-grey font-manrope">
-                  Fill out the form below and our team will contact you within 24 hours
-                </p>
-              </div>
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            
+            {/* Left Side - What to Expect */}
+            <div>
+              <h2 className="text-4xl font-bold text-simpl-black mb-8 font-manrope">
+                What to Expect in Your Demo
+              </h2>
               
-              <form className="space-y-8">
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <label className="block text-lg font-semibold text-simpl-black mb-3 font-manrope">First Name *</label>
-                    <input 
-                      type="text" 
-                      className="w-full px-6 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-simpl-green focus:border-simpl-green transition-colors text-lg font-medium"
-                      required 
-                    />
+              <div className="space-y-8">
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-simpl-green rounded-xl flex items-center justify-center">
+                    <Users className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <label className="block text-lg font-semibold text-simpl-black mb-3 font-manrope">Last Name *</label>
-                    <input 
-                      type="text" 
-                      className="w-full px-6 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-simpl-green focus:border-simpl-green transition-colors text-lg font-medium"
-                      required 
-                    />
-                  </div>
-                </div>
-                
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <label className="block text-lg font-semibold text-simpl-black mb-3 font-manrope">Email *</label>
-                    <input 
-                      type="email" 
-                      className="w-full px-6 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-simpl-green focus:border-simpl-green transition-colors text-lg font-medium"
-                      required 
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-lg font-semibold text-simpl-black mb-3 font-manrope">Phone Number</label>
-                    <input 
-                      type="tel" 
-                      className="w-full px-6 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-simpl-green focus:border-simpl-green transition-colors text-lg font-medium"
-                    />
-                  </div>
-                </div>
-                
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div>
-                    <label className="block text-lg font-semibold text-simpl-black mb-3 font-manrope">Practice Name *</label>
-                    <input 
-                      type="text" 
-                      className="w-full px-6 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-simpl-green focus:border-simpl-green transition-colors text-lg font-medium"
-                      required 
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-lg font-semibold text-simpl-black mb-3 font-manrope">Practice Size *</label>
-                    <select className="w-full px-6 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-simpl-green focus:border-simpl-green transition-colors text-lg font-medium">
-                      <option>Select practice size</option>
-                      <option>1-5 providers</option>
-                      <option>6-15 providers</option>
-                      <option>16-50 providers</option>
-                      <option>50+ providers</option>
-                    </select>
+                    <h3 className="text-xl font-semibold text-simpl-black mb-2">Personalized Walkthrough</h3>
+                    <p className="text-simpl-dark-grey leading-relaxed">
+                      We'll customize the demo based on your practice type, size, and specific challenges you're facing.
+                    </p>
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-lg font-semibold text-simpl-black mb-3 font-manrope">Practice Type</label>
-                  <select className="w-full px-6 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-simpl-green focus:border-simpl-green transition-colors text-lg font-medium">
-                    <option>Select practice type</option>
-                    <option>Primary Care</option>
-                    <option>Family Medicine</option>
-                    <option>Internal Medicine</option>
-                    <option>Pediatrics</option>
-                    <option>Long-Term Care</option>
-                    <option>Assisted Living</option>
-                    <option>Skilled Nursing</option>
-                    <option>Other</option>
-                  </select>
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-simpl-green rounded-xl flex items-center justify-center">
+                    <Calendar className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-simpl-black mb-2">Live Platform Tour</h3>
+                    <p className="text-simpl-dark-grey leading-relaxed">
+                      Experience our AI-powered features, intuitive interface, and seamless workflows in real-time.
+                    </p>
+                  </div>
                 </div>
-                
-                <div>
-                  <label className="block text-lg font-semibold text-simpl-black mb-3 font-manrope">Tell us about your current challenges</label>
-                  <textarea 
-                    rows={4}
-                    className="w-full px-6 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-simpl-green focus:border-simpl-green transition-colors text-lg font-medium"
-                    placeholder="What challenges are you facing with your current EHR system?"
-                  ></textarea>
+
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-simpl-green rounded-xl flex items-center justify-center">
+                    <Clock className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-simpl-black mb-2">ROI Analysis</h3>
+                    <p className="text-simpl-dark-grey leading-relaxed">
+                      See exactly how Simpl can save your practice time and money with concrete metrics and projections.
+                    </p>
+                  </div>
                 </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-simpl-green rounded-xl flex items-center justify-center">
+                    <CheckCircle className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-simpl-black mb-2">Implementation Plan</h3>
+                    <p className="text-simpl-dark-grey leading-relaxed">
+                      Get a clear roadmap for implementation, training, and ongoing support tailored to your timeline.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Additional Info */}
+              <div className="mt-12 p-6 bg-simpl-green/10 rounded-2xl border border-simpl-green/20">
+                <h3 className="text-xl font-semibold text-simpl-black mb-4">Demo Details</h3>
+                <ul className="space-y-2 text-simpl-dark-grey">
+                  <li className="flex items-center space-x-2">
+                    <CheckCircle className="w-5 h-5 text-simpl-green" />
+                    <span>30-minute personalized session</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <CheckCircle className="w-5 h-5 text-simpl-green" />
+                    <span>No commitment required</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <CheckCircle className="w-5 h-5 text-simpl-green" />
+                    <span>Get a custom ROI report</span>
+                  </li>
+                  <li className="flex items-center space-x-2">
+                    <CheckCircle className="w-5 h-5 text-simpl-green" />
+                    <span>Ask any questions about implementation</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Right Side - Calendly Widget */}
+            <div>
+              <div className="bg-white rounded-2xl shadow-2xl p-8 border border-simpl-green/10">
+                <h3 className="text-2xl font-bold text-simpl-black mb-6 text-center font-manrope">
+                  Choose Your Time Slot
+                </h3>
                 
-                <button 
-                  type="submit"
-                  className="w-full bg-simpl-green hover:bg-simpl-dark-green text-white py-6 rounded-xl font-bold text-xl btn-hover shadow-lg font-manrope"
-                >
-                  <Calendar className="w-6 h-6 inline mr-3" />
-                  Schedule Your Demo
-                </button>
-              </form>
+                {/* Calendly Embed */}
+                <div 
+                  className="calendly-inline-widget" 
+                  data-url="https://calendly.com/d/ckk9-6hd-cng/simpl-healthcare-demo?primary_color=1aa484&hide_event_type_details=1&hide_gdpr_banner=1"
+                  style={{ minWidth: '100%', height: '600px' }}
+                ></div>
+                
+                {/* Fallback Link */}
+                <div className="text-center mt-6">
+                  <p className="text-simpl-dark-grey text-sm mb-4">
+                    Having trouble with the calendar? 
+                  </p>
+                  <a 
+                    href="https://calendly.com/d/ckk9-6hd-cng/simpl-healthcare-demo" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="bg-simpl-green hover:bg-simpl-dark-green text-white px-6 py-3 rounded-xl font-semibold transition-colors duration-300 inline-flex items-center"
+                  >
+                    <Calendar className="w-5 h-5 mr-2" />
+                    Open Calendar in New Window
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* What to Expect Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-simpl-black mb-6 font-manrope">
-              What to Expect
-            </h2>
-            <p className="text-xl text-simpl-dark-grey max-w-3xl mx-auto font-manrope">
-              Your demo will be customized to your practice's specific needs and challenges
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-simpl-green/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl font-bold text-simpl-green">1</span>
-              </div>
-              <h3 className="text-xl font-bold mb-4 text-simpl-black">Discovery Call</h3>
-              <p className="text-simpl-dark-grey">We'll learn about your practice and current workflow challenges</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-simpl-green/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl font-bold text-simpl-green">2</span>
-              </div>
-              <h3 className="text-xl font-bold mb-4 text-simpl-black">Live Demo</h3>
-              <p className="text-simpl-dark-grey">See Simpl Healthcare in action with real-world scenarios</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-simpl-green/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl font-bold text-simpl-green">3</span>
-              </div>
-              <h3 className="text-xl font-bold mb-4 text-simpl-black">Q&A Session</h3>
-              <p className="text-simpl-dark-grey">Get answers to all your questions about features and implementation</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-simpl-green/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl font-bold text-simpl-green">4</span>
-              </div>
-              <h3 className="text-xl font-bold mb-4 text-simpl-black">Next Steps</h3>
-              <p className="text-simpl-dark-grey">Discuss pricing, implementation timeline, and onboarding process</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      
       <Footer />
     </main>
   )

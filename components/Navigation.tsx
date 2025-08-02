@@ -30,7 +30,7 @@ const Navigation = () => {
       ]
     },
     {
-      title: 'LTPAC',
+      title: 'Long Term Care',
       items: [
         { name: 'Long-Term Care Overview', href: '/long-term-care' },
         { name: 'Skilled Nursing Facilities', href: '/skilled-nursing' },
@@ -39,8 +39,10 @@ const Navigation = () => {
       ]
     },
     {
-      title: 'Primary Care',
+      title: 'Providers',
       items: [
+        { name: 'Behavioral Health', href: '/behavioral-health' },
+        { name: 'Primary Care Overview', href: '/primary-care' },
         { name: 'Family Medicine', href: '/family-medicine' },
         { name: 'Internal Medicine', href: '/internal-medicine' },
         { name: 'Pediatrics', href: '/pediatrics' },
@@ -125,6 +127,12 @@ const Navigation = () => {
               </div>
             ))}
             <Link
+              href="/team"
+              className="text-white hover:text-white/80 transition-colors duration-200 font-semibold text-lg"
+            >
+              Team
+            </Link>
+            <Link
               href="/testimonials"
               className="text-white hover:text-white/80 transition-colors duration-200 font-semibold text-lg"
             >
@@ -184,6 +192,13 @@ const Navigation = () => {
                 )}
               </div>
             ))}
+            <Link
+              href="/team"
+              className="block text-white hover:text-white/80 py-2 font-semibold text-lg"
+              onClick={() => setIsOpen(false)}
+            >
+              Team
+            </Link>
             <Link
               href="/testimonials"
               className="block text-white hover:text-white/80 py-2 font-semibold text-lg"

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import PageTemplate from '../../components/PageTemplate'
-import { Mail, Phone, MapPin, Clock, Send, MessageSquare } from 'lucide-react'
+import { Mail, Phone, Clock, Send, MessageSquare } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Contact Us - Simpl Healthcare',
@@ -125,8 +125,7 @@ export default function Contact() {
                     <Phone className="w-8 h-8 text-simpl-green mr-4" />
                     <h3 className="text-xl font-bold text-simpl-black">Phone Support</h3>
                   </div>
-                  <p className="text-lg text-simpl-dark-grey mb-2">Sales: (555) 123-4567</p>
-                  <p className="text-lg text-simpl-dark-grey mb-2">Support: (555) 123-4568</p>
+                  <p className="text-lg text-simpl-dark-grey mb-2">Main: (415) 832-9146</p>
                   <p className="text-sm text-simpl-dark-grey">Monday - Friday, 8am - 6pm PST</p>
                 </div>
 
@@ -138,16 +137,6 @@ export default function Contact() {
                   <p className="text-lg text-simpl-dark-grey mb-2">Sales: sales@simplhealthcare.com</p>
                   <p className="text-lg text-simpl-dark-grey mb-2">Support: support@simplhealthcare.com</p>
                   <p className="text-sm text-simpl-dark-grey">Response within 24 hours</p>
-                </div>
-
-                <div className="bg-white rounded-2xl p-8 shadow-lg border border-simpl-green/10">
-                  <div className="flex items-center mb-4">
-                    <MapPin className="w-8 h-8 text-simpl-green mr-4" />
-                    <h3 className="text-xl font-bold text-simpl-black">Visit Our Office</h3>
-                  </div>
-                  <p className="text-lg text-simpl-dark-grey mb-2">123 Healthcare Blvd, Suite 100</p>
-                  <p className="text-lg text-simpl-dark-grey mb-2">San Francisco, CA 94107</p>
-                  <p className="text-sm text-simpl-dark-grey">By appointment only</p>
                 </div>
 
                 <div className="bg-white rounded-2xl p-8 shadow-lg border border-simpl-green/10">
@@ -175,7 +164,7 @@ export default function Contact() {
                     Book Demo
                   </a>
                   <a
-                    href="tel:+15551234567"
+                    href="tel:+14158329146"
                     className="border-2 border-white hover:bg-white hover:text-simpl-green text-white px-6 py-3 rounded-xl font-bold text-lg transition-all duration-300 inline-block text-center"
                   >
                     Call Now
