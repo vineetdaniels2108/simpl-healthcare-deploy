@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
+      <defs>
+        <linearGradient id="ltcGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#e2e8f0;stop-opacity:1" />
+        </linearGradient>
+      </defs>
+      
+      <!-- Background -->
+      <rect width="1200" height="600" fill="url(#ltcGrad)"/>
+      
+      <!-- Main Interface Container -->
+      <rect x="50" y="50" width="1100" height="500" rx="12" fill="white" stroke="#e2e8f0" stroke-width="2"/>
+      
+      <!-- Header Bar -->
+      <rect x="60" y="60" width="1080" height="60" rx="6" fill="#10b981" fill-opacity="0.05"/>
+      <text x="80" y="85" font-family="Arial, sans-serif" font-size="16" font-weight="600" fill="#374151">Patient Chart - Margaret Thompson</text>
+      <rect x="1000" y="70" width="120" height="24" rx="12" fill="#10b981"/>
+      <text x="1060" y="85" font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="white" text-anchor="middle">Long-term Care</text>
+      
+      <!-- Left Sidebar - Patient Info -->
+      <rect x="70" y="140" width="280" height="380" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+      <text x="85" y="165" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#374151">Patient Information</text>
+      
+      <!-- Patient Details -->
+      <text x="85" y="195" font-family="Arial, sans-serif" font-size="12" fill="#6b7280">Name: Margaret Thompson</text>
+      <text x="85" y="215" font-family="Arial, sans-serif" font-size="12" fill="#6b7280">Age: 78 | Room: 204B</text>
+      <text x="85" y="235" font-family="Arial, sans-serif" font-size="12" fill="#6b7280">Admission: Dec 15, 2024</text>
+      <text x="85" y="255" font-family="Arial, sans-serif" font-size="12" fill="#6b7280">Care Level: Skilled Nursing</text>
+      
+      <!-- Care Plan Section -->
+      <rect x="85" y="275" width="250" height="80" rx="6" fill="white" stroke="#e2e8f0"/>
+      <text x="95" y="295" font-family="Arial, sans-serif" font-size="12" font-weight="600" fill="#374151">Current Care Plan</text>
+      <circle cx="105" cy="315" r="4" fill="#10b981"/>
+      <text x="120" y="320" font-family="Arial, sans-serif" font-size="11" fill="#374151">Medication management</text>
+      <circle cx="105" cy="335" r="4" fill="#10b981"/>
+      <text x="120" y="340" font-family="Arial, sans-serif" font-size="11" fill="#374151">Physical therapy - 3x/week</text>
+      
+      <!-- Main Content Area -->
+      <rect x="370" y="140" width="760" height="380" rx="8" fill="white" stroke="#e2e8f0"/>
+      
+      <!-- Tabs -->
+      <rect x="385" y="155" width="80" height="30" rx="4" fill="#10b981"/>
+      <text x="425" y="175" font-family="Arial, sans-serif" font-size="12" font-weight="600" fill="white" text-anchor="middle">Progress</text>
+      <rect x="475" y="155" width="80" height="30" rx="4" fill="#f3f4f6"/>
+      <text x="515" y="175" font-family="Arial, sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Vitals</text>
+      <rect x="565" y="155" width="80" height="30" rx="4" fill="#f3f4f6"/>
+      <text x="605" y="175" font-family="Arial, sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Care Notes</text>
+      
+      <!-- Progress Notes Content -->
+      <text x="400" y="215" font-family="Arial, sans-serif" font-size="14" font-weight="600" fill="#374151">Today's Progress - December 18, 2024</text>
+      
+      <!-- Check items -->
+      <circle cx="410" cy="245" r="6" fill="#10b981"/>
+      <path d="M407 245 L409 247 L413 243" stroke="white" stroke-width="2" fill="none"/>
+      <text x="430" y="250" font-family="Arial, sans-serif" font-size="12" fill="#374151">Mobility: Assisted with walker, steady gait</text>
+      
+      <circle cx="410" cy="275" r="6" fill="#10b981"/>
+      <path d="M407 275 L409 277 L413 273" stroke="white" stroke-width="2" fill="none"/>
+      <text x="430" y="280" font-family="Arial, sans-serif" font-size="12" fill="#374151">Medication: Morning doses administered</text>
+      
+      <circle cx="410" cy="305" r="6" fill="#10b981"/>
+      <path d="M407 305 L409 307 L413 303" stroke="white" stroke-width="2" fill="none"/>
+      <text x="430" y="310" font-family="Arial, sans-serif" font-size="12" fill="#374151">Nutrition: Completed 85% of breakfast</text>
+      
+      <!-- Assessment section -->
+      <rect x="400" y="335" width="700" height="80" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+      <text x="415" y="355" font-family="Arial, sans-serif" font-size="12" font-weight="600" fill="#374151">Assessment: Stable condition, responding well to treatment</text>
+      <text x="415" y="375" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">Blood pressure stable at 130/80. Patient reports good appetite.</text>
+      <text x="415" y="395" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">Continue current medication regimen. Schedule follow-up with physician.</text>
+      
+      <!-- Provider signature -->
+      <text x="400" y="445" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">Documented by: Sarah Johnson, RN | 2:30 PM</text>
+      
+      <!-- AI suggestion box -->
+      <rect x="750" y="355" width="340" height="60" rx="6" fill="#ecfdf5" stroke="#10b981" stroke-opacity="0.3"/>
+      <text x="765" y="375" font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="#065f46">AI Suggestion:</text>
+      <text x="765" y="390" font-family="Arial, sans-serif" font-size="10" fill="#065f46">Consider scheduling occupational therapy</text>
+      <text x="765" y="405" font-family="Arial, sans-serif" font-size="10" fill="#065f46">assessment based on mobility improvements</text>
+    </svg>

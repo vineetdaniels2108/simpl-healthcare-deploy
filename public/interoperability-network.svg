@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300">
+      <defs>
+        <linearGradient id="interopGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#f0f9ff;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#10b981;stop-opacity:0.1" />
+        </linearGradient>
+      </defs>
+      
+      <rect width="600" height="300" fill="url(#interopGrad)"/>
+      
+      <!-- Central Hub -->
+      <circle cx="300" cy="150" r="40" fill="#10b981" fill-opacity="0.2" stroke="#10b981" stroke-width="3"/>
+      <text x="300" y="150" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#10b981" text-anchor="middle">Simpl</text>
+      <text x="300" y="165" font-family="Arial, sans-serif" font-size="10" fill="#10b981" text-anchor="middle">Healthcare</text>
+      
+      <!-- Hospital Systems -->
+      <circle cx="150" cy="80" r="25" fill="white" stroke="#10b981" stroke-width="2"/>
+      <text x="150" y="85" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#10b981" text-anchor="middle">Epic</text>
+      
+      <circle cx="450" cy="80" r="25" fill="white" stroke="#10b981" stroke-width="2"/>
+      <text x="450" y="85" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#10b981" text-anchor="middle">Cerner</text>
+      
+      <circle cx="150" cy="220" r="25" fill="white" stroke="#10b981" stroke-width="2"/>
+      <text x="150" y="225" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#10b981" text-anchor="middle">AllScripts</text>
+      
+      <circle cx="450" cy="220" r="25" fill="white" stroke="#10b981" stroke-width="2"/>
+      <text x="450" y="220" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#10b981" text-anchor="middle">Athena</text>
+      <text x="450" y="232" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#10b981" text-anchor="middle">health</text>
+      
+      <circle cx="75" cy="150" r="25" fill="white" stroke="#10b981" stroke-width="2"/>
+      <text x="75" y="155" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="#10b981" text-anchor="middle">eClinical</text>
+      
+      <circle cx="525" cy="150" r="25" fill="white" stroke="#10b981" stroke-width="2"/>
+      <text x="525" y="155" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#10b981" text-anchor="middle">Labs</text>
+      
+      <!-- Connection Lines -->
+      <line x1="175" y1="105" x2="260" y2="130" stroke="#10b981" stroke-width="2" stroke-dasharray="5,5"/>
+      <line x1="425" y1="105" x2="340" y2="130" stroke="#10b981" stroke-width="2" stroke-dasharray="5,5"/>
+      <line x1="175" y1="195" x2="260" y2="170" stroke="#10b981" stroke-width="2" stroke-dasharray="5,5"/>
+      <line x1="425" y1="195" x2="340" y2="170" stroke="#10b981" stroke-width="2" stroke-dasharray="5,5"/>
+      <line x1="100" y1="150" x2="260" y2="150" stroke="#10b981" stroke-width="2" stroke-dasharray="5,5"/>
+      <line x1="500" y1="150" x2="340" y2="150" stroke="#10b981" stroke-width="2" stroke-dasharray="5,5"/>
+      
+      <!-- Data Flow Indicators -->
+      <circle cx="200" cy="115" r="3" fill="#10b981">
+        <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      
+      <circle cx="400" cy="115" r="3" fill="#10b981">
+        <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+      </circle>
+      
+      <!-- Title -->
+      <text x="300" y="30" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#10b981" text-anchor="middle">90% Hospital Network Coverage</text>
+      <text x="300" y="280" font-family="Arial, sans-serif" font-size="12" fill="#6b7280" text-anchor="middle">Seamless Data Exchange & Integration</text>
+    </svg>

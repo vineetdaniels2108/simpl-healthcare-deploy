@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600">
+      <rect width="400" height="600" fill="#f8fafc"/>
+      
+      <!-- Mobile Device Frame -->
+      <rect x="50" y="50" width="300" height="500" rx="25" fill="#1f2937" stroke="#374151" stroke-width="3"/>
+      <rect x="60" y="60" width="280" height="480" rx="20" fill="white"/>
+      
+      <!-- Status Bar -->
+      <rect x="70" y="70" width="260" height="25" fill="#f8fafc"/>
+      <text x="80" y="85" font-family="Arial, sans-serif" font-size="10" fill="#374151">9:41 AM</text>
+      <text x="310" y="85" font-family="Arial, sans-serif" font-size="10" fill="#374151" text-anchor="end">100%</text>
+      
+      <!-- App Header -->
+      <rect x="70" y="105" width="260" height="40" rx="6" fill="#10b981"/>
+      <text x="200" y="125" font-family="Arial, sans-serif" font-size="12" font-weight="600" fill="white" text-anchor="middle">Home Health Visit</text>
+      
+      <!-- Patient Info Card -->
+      <rect x="80" y="160" width="240" height="70" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+      <text x="90" y="180" font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="#374151">Today's Visit</text>
+      <text x="90" y="195" font-family="Arial, sans-serif" font-size="9" fill="#6b7280">Patient: Alice Johnson</text>
+      <text x="90" y="210" font-family="Arial, sans-serif" font-size="9" fill="#6b7280">Address: 456 Maple Ave</text>
+      <text x="90" y="225" font-family="Arial, sans-serif" font-size="9" fill="#6b7280">Visit Type: Skilled Nursing</text>
+      
+      <!-- Quick Actions -->
+      <text x="90" y="260" font-family="Arial, sans-serif" font-size="12" font-weight="600" fill="#374151">Quick Actions</text>
+      
+      <!-- Action buttons grid -->
+      <rect x="90" y="275" width="110" height="60" rx="8" fill="#ecfdf5" stroke="#10b981" stroke-opacity="0.3"/>
+      <text x="145" y="295" font-family="Arial, sans-serif" font-size="10" font-weight="600" fill="#065f46" text-anchor="middle">📊 Vitals</text>
+      <text x="145" y="310" font-family="Arial, sans-serif" font-size="8" fill="#6b7280" text-anchor="middle">Record vital signs</text>
+      <text x="145" y="325" font-family="Arial, sans-serif" font-size="8" fill="#10b981" text-anchor="middle">Tap to start</text>
+      
+      <rect x="210" y="275" width="110" height="60" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-opacity="0.3"/>
+      <text x="265" y="295" font-family="Arial, sans-serif" font-size="10" font-weight="600" fill="#92400e" text-anchor="middle">📝 Notes</text>
+      <text x="265" y="310" font-family="Arial, sans-serif" font-size="8" fill="#6b7280" text-anchor="middle">Voice-to-text</text>
+      <text x="265" y="325" font-family="Arial, sans-serif" font-size="8" fill="#d97706" text-anchor="middle">Ready to record</text>
+      
+      <!-- Care Tasks -->
+      <text x="90" y="365" font-family="Arial, sans-serif" font-size="12" font-weight="600" fill="#374151">Care Tasks</text>
+      
+      <!-- Task checklist -->
+      <rect x="90" y="380" width="230" height="30" rx="6" fill="white" stroke="#e2e8f0"/>
+      <circle cx="105" cy="395" r="6" fill="#10b981"/>
+      <path d="M102 395 L104 397 L108 393" stroke="white" stroke-width="1.5" fill="none"/>
+      <text x="120" y="400" font-family="Arial, sans-serif" font-size="10" fill="#374151">Wound assessment completed</text>
+      
+      <rect x="90" y="415" width="230" height="30" rx="6" fill="white" stroke="#e2e8f0"/>
+      <circle cx="105" cy="430" r="6" fill="#10b981"/>
+      <path d="M102 430 L104 432 L108 428" stroke="white" stroke-width="1.5" fill="none"/>
+      <text x="120" y="435" font-family="Arial, sans-serif" font-size="10" fill="#374151">Medication education provided</text>
+      
+      <rect x="90" y="450" width="230" height="30" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+      <circle cx="105" cy="465" r="6" fill="#f59e0b"/>
+      <text x="120" y="470" font-family="Arial, sans-serif" font-size="10" fill="#374151">Physical therapy exercises - In progress</text>
+      
+      <!-- Sync Button -->
+      <rect x="90" y="500" width="230" height="35" rx="8" fill="#10b981"/>
+      <text x="205" y="515" font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="white" text-anchor="middle">🔄 Sync Visit Data</text>
+      <text x="205" y="530" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">Upload to EHR instantly</text>
+    </svg>

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
+      <defs>
+        <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#f0f9ff;stop-opacity:1" />
+          <stop offset="50%" style="stop-color:#34d399;stop-opacity:0.1" />
+          <stop offset="100%" style="stop-color:#10b981;stop-opacity:0.2" />
+        </linearGradient>
+        <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#f9fafb;stop-opacity:1" />
+        </linearGradient>
+      </defs>
+      
+      <!-- Background -->
+      <rect width="1200" height="600" fill="url(#heroGrad)"/>
+      
+      <!-- Dashboard Frame -->
+      <rect x="50" y="50" width="1100" height="500" rx="20" fill="url(#cardGrad)" stroke="#10b981" stroke-width="2"/>
+      
+      <!-- Header Bar -->
+      <rect x="70" y="70" width="1060" height="60" rx="10" fill="#10b981" fill-opacity="0.1"/>
+      <text x="90" y="105" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#10b981">Simpl Healthcare Dashboard</text>
+      
+      <!-- Navigation Tabs -->
+      <rect x="90" y="150" width="120" height="40" rx="5" fill="#10b981"/>
+      <text x="150" y="175" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white" text-anchor="middle">Patients</text>
+      
+      <rect x="220" y="150" width="120" height="40" rx="5" fill="#f3f4f6"/>
+      <text x="280" y="175" font-family="Arial, sans-serif" font-size="14" fill="#374151" text-anchor="middle">Schedule</text>
+      
+      <rect x="350" y="150" width="120" height="40" rx="5" fill="#f3f4f6"/>
+      <text x="410" y="175" font-family="Arial, sans-serif" font-size="14" fill="#374151" text-anchor="middle">Notes</text>
+      
+      <!-- Patient Cards -->
+      <rect x="90" y="210" width="340" height="120" rx="10" fill="white" stroke="#e5e7eb"/>
+      <circle cx="130" cy="250" r="20" fill="#10b981" fill-opacity="0.2"/>
+      <text x="130" y="255" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#10b981" text-anchor="middle">JS</text>
+      <text x="170" y="245" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#111827">John Smith</text>
+      <text x="170" y="265" font-family="Arial, sans-serif" font-size="12" fill="#6b7280">Age: 45 | Last Visit: Today</text>
+      <text x="170" y="285" font-family="Arial, sans-serif" font-size="12" fill="#6b7280">Diagnosis: Hypertension</text>
+      
+      <!-- Chart Area -->
+      <rect x="450" y="210" width="680" height="300" rx="10" fill="white" stroke="#e5e7eb"/>
+      <text x="790" y="235" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#111827" text-anchor="middle">Patient Vitals Trend</text>
+      
+      <!-- Chart Lines -->
+      <polyline points="470,480 520,450 570,420 620,400 670,390 720,380 770,370 820,360 870,350 920,340 970,330 1020,320 1070,310 1120,300" 
+                stroke="#10b981" stroke-width="3" fill="none"/>
+      <polyline points="470,490 520,480 570,470 620,460 670,450 720,440 770,430 820,420 870,410 920,400 970,390 1020,380 1070,370 1120,360" 
+                stroke="#3b82f6" stroke-width="3" fill="none"/>
+      
+      <!-- Legend -->
+      <circle cx="480" cy="270" r="5" fill="#10b981"/>
+      <text x="495" y="275" font-family="Arial, sans-serif" font-size="12" fill="#6b7280">Blood Pressure</text>
+      <circle cx="480" cy="290" r="5" fill="#3b82f6"/>
+      <text x="495" y="295" font-family="Arial, sans-serif" font-size="12" fill="#6b7280">Heart Rate</text>
+      
+      <!-- AI Badge -->
+      <rect x="950" y="80" width="150" height="30" rx="15" fill="#10b981"/>
+      <text x="1025" y="100" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">🤖 AI-Powered</text>
+    </svg>
