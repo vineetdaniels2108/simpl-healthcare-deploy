@@ -44,12 +44,12 @@
   --darkgrey: #333;
   --bl2: #0376a0;
   --blue: #0476a0;
-  --simpl-green: #22c55e;
-  --simpl-dark-green: #16a34a;
-  --simpl-blue: #3b82f6;
-  --simpl-black: #1f2937;
-  --simpl-dark-grey: #6b7280;
-  --simpl-grey: #f9fafb;
+  --simpl-green: #1aa484;
+  --simpl-dark-green: #18b791;
+  --simpl-blue: #0476a0;
+  --simpl-black: #394152;
+  --simpl-dark-grey: #6c717b;
+  --simpl-grey: #f8f8f8;
 }
 
 * {
@@ -117,7 +117,7 @@ a {
 
 .btn-hover:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
+  box-shadow: 0 10px 25px rgba(26, 164, 132, 0.3);
 }
 
 /* Text animations */
