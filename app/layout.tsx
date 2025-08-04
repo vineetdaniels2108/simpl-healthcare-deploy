@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Manrope } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import ExitIntentModal from '../components/ExitIntentModal'
 import './globals.css'
 
 const manrope = Manrope({ 
@@ -34,6 +35,7 @@ export default function RootLayout({
       </head>
       <body className={`${manrope.variable} font-manrope antialiased`}>
         {children}
+        <ExitIntentModal />
         <Analytics />
       </body>
     </html>
