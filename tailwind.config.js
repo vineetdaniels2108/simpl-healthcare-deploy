@@ -8,13 +8,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'simpl-green': '#1aa484',
-        'simpl-dark-green': '#18b791',
-        'simpl-blue': '#0476a0',
-        'simpl-dark-blue': '#0376a0',
-        'simpl-grey': '#f8f8f8',
-        'simpl-dark-grey': '#6c717b',
-        'simpl-black': '#394152',
+        'simpl-green': '#22c55e',
+        'simpl-dark-green': '#16a34a',
+        'simpl-blue': '#3b82f6',
+        'simpl-dark-blue': '#1d4ed8',
+        'simpl-grey': '#f9fafb',
+        'simpl-dark-grey': '#6b7280',
+        'simpl-black': '#1f2937',
         'simpl-darkgrey': '#333333',
       },
       fontFamily: {
