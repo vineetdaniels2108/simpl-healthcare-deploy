@@ -7,8 +7,6 @@ const manrope = Manrope({
   weight: ['200', '300', '400', '500', '600', '700', '800'],
   variable: '--font-manrope',
   display: 'swap',
-  preload: true,
-  fallback: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
 })
 
 export const metadata: Metadata = {
@@ -31,14 +29,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={manrope.variable}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
-          rel="stylesheet"
-          media="print"
-          onLoad="this.media='all'"
-        />
         <link rel="icon" href="/favicon.png" />
       </head>
       <body className={`${manrope.variable} font-manrope antialiased`}>

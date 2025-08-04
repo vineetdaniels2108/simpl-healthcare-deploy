@@ -1,0 +1,24 @@
+# Ignore TypeScript type checking
+tsconfig.json
+*.ts
+!*.d.ts
+
+# Ignore development files
+.git
+.gitignore
+README.md
+.vscode
+.idea
+
+# Ignore test files
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+
+# Ignore documentation
+docs/
+*.md
+
+# Ignore Agreements folder
+Agreements/ 
