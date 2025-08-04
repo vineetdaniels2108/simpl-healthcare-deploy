@@ -52,95 +52,46 @@ const HeroSection = () => {
 
           {/* Stats with Green Accents */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 max-w-4xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 shadow-xl">
-              <div className="text-3xl font-bold text-white mb-2">18+</div>
-              <div className="text-sm text-white/90 font-medium">Hours Saved Per Week</div>
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-simpl-green/20 shadow-xl">
+              <div className="text-3xl font-bold text-simpl-green mb-2">18+</div>
+              <div className="text-sm text-simpl-dark-grey font-medium">Hours Saved Per Week</div>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 shadow-xl">
-              <div className="text-3xl font-bold text-white mb-2">90%</div>
-              <div className="text-sm text-white/90 font-medium">Hospital Integration</div>
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-simpl-green/20 shadow-xl">
+              <div className="text-3xl font-bold text-simpl-green mb-2">90%</div>
+              <div className="text-sm text-simpl-dark-grey font-medium">Hospital Integration</div>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 shadow-xl">
-              <div className="text-3xl font-bold text-white mb-2">100%</div>
-              <div className="text-sm text-white/90 font-medium">Cloud-Based Access</div>
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-simpl-green/20 shadow-xl">
+              <div className="text-3xl font-bold text-simpl-green mb-2">100%</div>
+              <div className="text-sm text-simpl-dark-grey font-medium">Cloud-Based Access</div>
             </div>
           </div>
         </div>
 
-        {/* Main Dashboard Image - ALTERNATIVE OPTION 2 */}
+        {/* Main Homepage Video */}
         <div className="relative mt-16">
           <div className="relative z-10 max-w-6xl mx-auto">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-white to-simpl-grey p-6 border border-simpl-green/20">
               <div className="absolute inset-0 bg-gradient-to-br from-simpl-green/5 to-transparent"></div>
-              {/* Modern Healthcare Interface */}
-              <img
-                src="/vwcfva.png"
-                alt="Modern Healthcare Management Interface"
+              {/* Homepage Video */}
+              <video
                 className="relative z-10 w-full h-auto rounded-xl shadow-lg"
-                loading="eager"
-              />
+                controls
+                poster="/take-control-simpl.png"
+                preload="metadata"
+              >
+                <source src="/homepage-video.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
         </div>
 
-        {/* Additional Content Section */}
+        {/* Additional Content Section - Removed second image/video */}
         <div className="mt-20 text-center">
           <p className="text-xl md:text-2xl text-simpl-dark-grey mb-8 max-w-4xl mx-auto font-manrope leading-relaxed">
             <span className="text-simpl-green font-semibold">Simpl Healthcare</span> solutions
             streamlines your practice, from automating front office admin tasks to optimizing patient care.
           </p>
-
-          <div className="relative inline-block mb-8">
-            <div className="relative rounded-xl overflow-hidden shadow-xl bg-gradient-to-br from-white to-simpl-grey p-4 border border-simpl-green/20">
-              <div className="absolute inset-0 bg-gradient-to-br from-simpl-green/5 to-transparent"></div>
-              {/* Video Preview with Overlay Button */}
-              <div className="relative z-10">
-                {/* Animated background or video preview */}
-                <div className="relative bg-gradient-to-br from-simpl-blue/10 to-simpl-green/10 rounded-lg aspect-video flex items-center justify-center">
-                  {/* Animated healthcare technology background */}
-                  <img
-                    src="/sadasad.png"
-                    alt="Healthcare Technology Demo Preview"
-                    className="w-full h-full object-cover rounded-lg opacity-80"
-                  />
-                  
-                  {/* Animated pulse overlay to simulate video */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-simpl-green/20 via-transparent to-simpl-blue/20 rounded-lg animate-pulse"></div>
-                  
-                  {/* Tech grid overlay for video feel */}
-                  <div className="absolute inset-0 opacity-30">
-                    <div className="grid grid-cols-8 grid-rows-6 h-full w-full gap-1 p-4">
-                      {Array.from({ length: 48 }).map((_, i) => (
-                        <div
-                          key={i}
-                          className={`bg-simpl-green/20 rounded-sm ${
-                            Math.random() > 0.7 ? 'animate-pulse' : ''
-                          }`}
-                          style={{
-                            animationDelay: `${Math.random() * 2}s`,
-                            animationDuration: `${1 + Math.random()}s`
-                          }}
-                        ></div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Overlaid Watch Overview Button */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <button
-                    onClick={() => setShowVideo(true)}
-                    className="inline-flex items-center gap-3 text-simpl-green hover:text-simpl-dark-green cursor-pointer transition-all duration-300 text-lg font-semibold font-manrope bg-white/95 hover:bg-white px-8 py-4 rounded-full border-2 border-simpl-green/30 hover:border-simpl-green shadow-xl hover:shadow-2xl hover:scale-105 backdrop-blur-sm"
-                  >
-                    <div className="w-12 h-12 bg-simpl-green/10 rounded-full flex items-center justify-center">
-                      <Play className="w-6 h-6 text-simpl-green ml-1" />
-                    </div>
-                    Watch Overview
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -154,17 +105,15 @@ const HeroSection = () => {
             >
               ×
             </button>
-            <div className="w-full h-full flex items-center justify-center text-simpl-black rounded-lg">
-              <div className="text-center">
-                <Play className="w-16 h-16 mx-auto mb-4 text-simpl-green" />
-                <p className="text-lg font-semibold font-manrope">Demo Video</p>
-                <p className="text-sm text-simpl-dark-grey mt-2 font-manrope">
-                  Original video: https://streamable.com/e/4gkcpf
-                </p>
-                <p className="text-xs text-simpl-dark-grey mt-4 font-manrope">
-                  Video would be embedded here in production
-                </p>
-              </div>
+            <div className="w-full h-full flex items-center justify-center bg-black rounded-lg">
+              <video
+                className="w-full h-full rounded-lg"
+                controls
+                autoPlay
+              >
+                <source src="/homepage-video.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
         </div>
