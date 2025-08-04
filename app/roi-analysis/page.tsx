@@ -35,22 +35,31 @@ export default function ROIAnalysis() {
     const occupiedBeds = Math.round(facilitySize * (currentOccupancy / 100))
     const currentAnnualRevenue = occupiedBeds * avgDailyRate * 365
     
-    // Efficiency improvements with Simpl
-    const newDocTime = currentDocTime * 0.4 // 60% reduction
-    const newEfficiency = Math.min(currentEfficiency * 1.4, 95) // 40% improvement, capped at 95%
-    const newOccupancy = Math.min(currentOccupancy * 1.15, 98) // 15% improvement, capped at 98%
-    const newDailyRate = avgDailyRate * 1.12 // 12% increase through better documentation
+    // More conservative efficiency improvements with Simpl
+    const newDocTime = currentDocTime * 0.6 // 40% reduction (more conservative)
+    const newEfficiency = Math.min(currentEfficiency * 1.25, 95) // 25% improvement, capped at 95%
+    const newOccupancy = Math.min(currentOccupancy * 1.08, 98) // 8% improvement, capped at 98%
+    const newDailyRate = avgDailyRate * 1.08 // 8% increase through better documentation (more conservative)
     
     const newOccupiedBeds = Math.round(facilitySize * (newOccupancy / 100))
     const newAnnualRevenue = newOccupiedBeds * newDailyRate * 365
     
     const annualSavings = newAnnualRevenue - currentAnnualRevenue
     const timeSavings = (currentDocTime - newDocTime) * occupiedBeds * 365 // hours saved per year
-    const staffSavings = (timeSavings / 2080) * 65000 // assuming $65k/year per FTE
+    const staffSavings = (timeSavings / 2080) * 45000 // assuming $45k/year per FTE (more conservative)
     
-    const totalAnnualBenefit = annualSavings + staffSavings
-    const roi = ((totalAnnualBenefit - implementationCost) / implementationCost) * 100
+    // Add implementation and ongoing costs for more realistic calculation
+    const ongoingAnnualCost = implementationCost * 0.15 // 15% annual maintenance/subscription
+    const totalAnnualBenefit = annualSavings + staffSavings - ongoingAnnualCost
+    
+    const roi = ((totalAnnualBenefit) / implementationCost) * 100
     const paybackMonths = (implementationCost / (totalAnnualBenefit / 12))
+    
+    // Calculate additional meaningful metrics
+    const monthlyBenefit = totalAnnualBenefit / 12
+    const breakEvenMonths = Math.max(paybackMonths, 1) // Ensure at least 1 month
+    const timeToPositiveFlow = Math.ceil(breakEvenMonths)
+    const threeYearNetBenefit = (totalAnnualBenefit * 3) - implementationCost
     
     return {
       currentAnnualRevenue,
@@ -59,8 +68,12 @@ export default function ROIAnalysis() {
       timeSavings: Math.round(timeSavings),
       staffSavings,
       totalAnnualBenefit,
+      ongoingAnnualCost,
       roi,
-      paybackMonths,
+      paybackMonths: breakEvenMonths,
+      monthlyBenefit,
+      timeToPositiveFlow,
+      threeYearNetBenefit,
       newDocTime,
       newEfficiency,
       newOccupancy
@@ -234,8 +247,27 @@ export default function ROIAnalysis() {
                     <div className="text-sm text-simpl-dark-grey">Annual ROI</div>
                   </div>
                   <div className="bg-simpl-grey rounded-xl p-4 text-center">
-                    <div className="text-3xl font-bold text-simpl-black mb-1">{results.paybackMonths.toFixed(1)}</div>
-                    <div className="text-sm text-simpl-dark-grey">Payback (Months)</div>
+                    <div className="text-3xl font-bold text-simpl-black mb-1">
+                      {results.paybackMonths < 12 ? 
+                        `${results.timeToPositiveFlow}mo` : 
+                        `${(results.paybackMonths/12).toFixed(1)}yr`
+                      }
+                    </div>
+                    <div className="text-sm text-simpl-dark-grey">
+                      {results.paybackMonths < 12 ? 'Break-Even' : 'Payback Period'}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Additional Metrics */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-simpl-grey rounded-xl p-4 text-center">
+                    <div className="text-2xl font-bold text-simpl-black mb-1">${results.monthlyBenefit.toLocaleString()}</div>
+                    <div className="text-sm text-simpl-dark-grey">Monthly Benefit</div>
+                  </div>
+                  <div className="bg-simpl-grey rounded-xl p-4 text-center">
+                    <div className="text-2xl font-bold text-simpl-black mb-1">${results.threeYearNetBenefit.toLocaleString()}</div>
+                    <div className="text-sm text-simpl-dark-grey">3-Year Net Benefit</div>
                   </div>
                 </div>
 
@@ -266,7 +298,7 @@ export default function ROIAnalysis() {
                     <div className="flex justify-between items-center">
                       <span className="text-simpl-dark-grey">Documentation Time</span>
                       <span className="text-simpl-green font-semibold">
-                        {currentDocTime} → {results.newDocTime.toFixed(0)} min (-60%)
+                        {currentDocTime} → {results.newDocTime.toFixed(0)} min (-40%)
                       </span>
                     </div>
                     <div className="flex justify-between items-center">
@@ -286,7 +318,7 @@ export default function ROIAnalysis() {
 
                 {/* Time & Staff Savings */}
                 <div className="border border-gray-200 rounded-xl p-6">
-                  <h3 className="text-xl font-bold text-simpl-black mb-4">Time & Staff Savings</h3>
+                  <h3 className="text-xl font-bold text-simpl-black mb-4">Annual Cost-Benefit Analysis</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
                       <span className="text-simpl-dark-grey">Annual Hours Saved</span>
@@ -296,9 +328,17 @@ export default function ROIAnalysis() {
                       <span className="text-simpl-dark-grey">Staff Cost Savings</span>
                       <span className="font-semibold text-simpl-green">${results.staffSavings.toLocaleString()}</span>
                     </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-simpl-dark-grey">Revenue Increase</span>
+                      <span className="font-semibold text-simpl-green">${results.annualSavings.toLocaleString()}</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-simpl-dark-grey">Annual Platform Cost</span>
+                      <span className="font-semibold text-red-600">-${results.ongoingAnnualCost.toLocaleString()}</span>
+                    </div>
                     <hr className="my-2" />
                     <div className="flex justify-between items-center">
-                      <span className="font-semibold text-simpl-black">Total Annual Benefit</span>
+                      <span className="font-semibold text-simpl-black">Net Annual Benefit</span>
                       <span className="font-bold text-simpl-green text-lg">${results.totalAnnualBenefit.toLocaleString()}</span>
                     </div>
                   </div>
@@ -326,9 +366,9 @@ export default function ROIAnalysis() {
               <div className="w-12 h-12 bg-simpl-green/10 rounded-lg flex items-center justify-center mb-4">
                 <Clock className="w-6 h-6 text-simpl-green" />
               </div>
-              <h3 className="text-xl font-bold text-simpl-black mb-3 font-manrope">60% Documentation Reduction</h3>
+              <h3 className="text-xl font-bold text-simpl-black mb-3 font-manrope">40% Documentation Reduction</h3>
               <p className="text-simpl-dark-grey mb-4">
-                AI-powered charting reduces documentation time from 45+ minutes to under 18 minutes per resident per day.
+                AI-powered charting reduces documentation time from 45+ minutes to under 27 minutes per resident per day.
               </p>
               <ul className="space-y-2 text-sm text-simpl-dark-grey">
                 <li>• Smart auto-completion</li>
@@ -341,7 +381,7 @@ export default function ROIAnalysis() {
               <div className="w-12 h-12 bg-simpl-green/10 rounded-lg flex items-center justify-center mb-4">
                 <DollarSign className="w-6 h-6 text-simpl-green" />
               </div>
-              <h3 className="text-xl font-bold text-simpl-black mb-3 font-manrope">12% Reimbursement Increase</h3>
+              <h3 className="text-xl font-bold text-simpl-black mb-3 font-manrope">8% Reimbursement Increase</h3>
               <p className="text-simpl-dark-grey mb-4">
                 Optimized PDPM assessments and accurate documentation lead to better reimbursement rates.
               </p>
@@ -356,7 +396,7 @@ export default function ROIAnalysis() {
               <div className="w-12 h-12 bg-simpl-green/10 rounded-lg flex items-center justify-center mb-4">
                 <Users className="w-6 h-6 text-simpl-green" />
               </div>
-              <h3 className="text-xl font-bold text-simpl-black mb-3 font-manrope">15% Occupancy Improvement</h3>
+              <h3 className="text-xl font-bold text-simpl-black mb-3 font-manrope">8% Occupancy Improvement</h3>
               <p className="text-simpl-dark-grey mb-4">
                 Streamlined operations and better care quality lead to higher occupancy rates and resident retention.
               </p>
@@ -386,9 +426,9 @@ export default function ROIAnalysis() {
               <div className="w-12 h-12 bg-simpl-green/10 rounded-lg flex items-center justify-center mb-4">
                 <Zap className="w-6 h-6 text-simpl-green" />
               </div>
-              <h3 className="text-xl font-bold text-simpl-black mb-3 font-manrope">40% Efficiency Increase</h3>
+              <h3 className="text-xl font-bold text-simpl-black mb-3 font-manrope">25% Efficiency Increase</h3>
               <p className="text-simpl-dark-grey mb-4">
-                Workflow automation and AI assistance dramatically improve operational efficiency across all departments.
+                Workflow automation and AI assistance significantly improve operational efficiency across all departments.
               </p>
               <ul className="space-y-2 text-sm text-simpl-dark-grey">
                 <li>• Automated workflows</li>
