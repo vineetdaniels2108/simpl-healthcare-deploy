@@ -321,16 +321,9 @@ const FeaturesSection = () => {
             </Link>
           </div>
 
-          <div className="inline-flex items-center gap-3 text-simpl-green hover:text-simpl-dark-green transition-colors duration-200 text-lg font-semibold bg-white/50 px-6 py-3 rounded-full border border-simpl-green/20 hover:bg-simpl-green/10">
-            <span>Compare with other EHR systems</span>
-            <Image
-              src="/4829869_arrow_next_right_icon.png"
-              alt="Arrow right"
-              width={20}
-              height={20}
-              className="w-5 h-5"
-            />
-          </div>
+          <p className="text-simpl-dark-grey text-lg">
+            Ready to see how all these features work together? Schedule a personalized demo today.
+          </p>
         </div>
       </div>
     </section>
