@@ -35,9 +35,7 @@ const Navigation = () => {
         { name: 'Long-Term Care Overview', href: '/long-term-care' },
         { name: 'Skilled Nursing Facilities', href: '/skilled-nursing' },
         { name: 'Assisted Living', href: '/assisted-living' },
-        { name: 'Home Health', href: '/home-health' },
-        { name: 'PDPM Calculator', href: '/pdpm-calculator' },
-        { name: 'ROI Analysis', href: '/roi-analysis' }
+        { name: 'Home Health', href: '/home-health' }
       ]
     },
     {
