@@ -9,25 +9,12 @@ export const metadata: Metadata = {
 }
 
 export default function PrimaryCare() {
-  const heroContent = {
-    badge: "Primary Care Super-Hub",
-    title: "Your Primary Care Super-Hub (Without the Click Fatigue)",
-    subtitle: "Primary-care docs are stuck in a perfect storm: growing patient panels, vanishing margins, and inboxes that never quit. Simpl turns that chaos into clean, automated flow—so you spend your time doctoring, not data-wrangling.",
-    stats: [
-      { value: "2.5 hrs", label: "Less Documentation Daily" },
-      { value: "40%", label: "Reduction in No-Shows" },
-      { value: "<27 Days", label: "New Patient Wait Time" }
-    ],
-    primaryCTA: {
-      text: "Book Demo",
-      href: "/book-demo"
-    },
-    secondaryCTA: {
-      text: "Watch Overview",
-      href: "/demo-video"
-    },
-    backgroundImage: "/primary-care-hero.png"
-  }
+  // Convert heroContent to individual props that PageTemplate expects
+  const heroStats = [
+    { number: "2.5 hrs", label: "Less Documentation Daily" },
+    { number: "40%", label: "Reduction in No-Shows" },
+    { number: "<27 Days", label: "New Patient Wait Time" }
+  ]
 
   const painPoints = [
     {
@@ -124,7 +111,15 @@ export default function PrimaryCare() {
   ]
 
   return (
-    <PageTemplate heroContent={heroContent}>
+    <PageTemplate 
+      title="Your Primary Care Super-Hub (Without the Click Fatigue)"
+      subtitle="🩺 Primary Care Super-Hub"
+      description="Primary-care docs are stuck in a perfect storm: growing patient panels, vanishing margins, and inboxes that never quit. Simpl turns that chaos into clean, automated flow—so you spend your time doctoring, not data-wrangling."
+      heroImage="/primary-care-hero.png"
+      heroImageAlt="Primary Care Dashboard"
+      showHeroStats={true}
+      heroStats={heroStats}
+    >
       {/* Pain Points Section */}
       <section className="py-20 bg-gradient-to-br from-red-50 to-orange-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -283,4 +278,4 @@ export default function PrimaryCare() {
       </section>
     </PageTemplate>
   )
-} 
+}
