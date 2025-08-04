@@ -65,8 +65,6 @@ const Footer = () => {
               <li><Link href="/skilled-nursing" className="text-white/80 hover:text-white transition-colors font-medium">Skilled Nursing Facilities</Link></li>
               <li><Link href="/assisted-living" className="text-white/80 hover:text-white transition-colors font-medium">Assisted Living</Link></li>
               <li><Link href="/home-health" className="text-white/80 hover:text-white transition-colors font-medium">Home Health</Link></li>
-              <li><Link href="/pdpm-calculator" className="text-white/80 hover:text-white transition-colors font-medium">PDPM Calculator</Link></li>
-              <li><Link href="/roi-analysis" className="text-white/80 hover:text-white transition-colors font-medium">ROI Analysis</Link></li>
             </ul>
           </div>
 

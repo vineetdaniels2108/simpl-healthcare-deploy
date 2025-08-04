@@ -469,13 +469,13 @@ export default function SkilledNursing() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="/book-demo"
+                href="/pdpm-calculator"
                 className="bg-white hover:bg-gray-100 text-simpl-green px-8 py-4 rounded-xl font-bold text-lg btn-hover inline-block"
               >
                 See PDPM Calculator
               </a>
               <a
-                href="/contact"
+                href="/roi-analysis"
                 className="border-2 border-white hover:bg-white hover:text-simpl-green text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 inline-block"
               >
                 Get ROI Analysis
