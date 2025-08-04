@@ -52,17 +52,17 @@ const HeroSection = () => {
 
           {/* Stats with Green Accents */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 max-w-4xl mx-auto">
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-simpl-green/10 shadow-lg">
-              <div className="text-3xl font-bold text-simpl-green mb-2">18+</div>
-              <div className="text-sm text-simpl-dark-grey">Hours Saved Per Week</div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 shadow-xl">
+              <div className="text-3xl font-bold text-white mb-2">18+</div>
+              <div className="text-sm text-white/90 font-medium">Hours Saved Per Week</div>
             </div>
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-simpl-green/10 shadow-lg">
-              <div className="text-3xl font-bold text-simpl-green mb-2">90%</div>
-              <div className="text-sm text-simpl-dark-grey">Hospital Integration</div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 shadow-xl">
+              <div className="text-3xl font-bold text-white mb-2">90%</div>
+              <div className="text-sm text-white/90 font-medium">Hospital Integration</div>
             </div>
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border border-simpl-green/10 shadow-lg">
-              <div className="text-3xl font-bold text-simpl-green mb-2">100%</div>
-              <div className="text-sm text-simpl-dark-grey">HIPAA Compliant</div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 shadow-xl">
+              <div className="text-3xl font-bold text-white mb-2">100%</div>
+              <div className="text-sm text-white/90 font-medium">Cloud-Based Access</div>
             </div>
           </div>
         </div>

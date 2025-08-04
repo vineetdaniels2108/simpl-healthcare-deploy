@@ -73,8 +73,8 @@ const PageTemplate = ({
                 <div className="grid grid-cols-2 gap-6 mt-12">
                   {finalHeroStats.map((stat, index) => (
                     <div key={index} className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-                      <div className="text-3xl font-bold text-simpl-green mb-2">{stat.number}</div>
-                      <div className="text-sm text-gray-200">{stat.label}</div>
+                      <div className="text-3xl font-bold text-white mb-2">{stat.number}</div>
+                      <div className="text-sm text-white/90">{stat.label}</div>
                     </div>
                   ))}
                 </div>
