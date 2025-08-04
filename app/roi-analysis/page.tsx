@@ -35,37 +35,42 @@ export default function ROIAnalysis() {
     const occupiedBeds = Math.round(facilitySize * (currentOccupancy / 100))
     const currentAnnualRevenue = occupiedBeds * avgDailyRate * 365
     
-    // More conservative efficiency improvements with Simpl
-    const newDocTime = currentDocTime * 0.6 // 40% reduction (more conservative)
-    const newEfficiency = Math.min(currentEfficiency * 1.25, 95) // 25% improvement, capped at 95%
-    const newOccupancy = Math.min(currentOccupancy * 1.08, 98) // 8% improvement, capped at 98%
-    const newDailyRate = avgDailyRate * 1.08 // 8% increase through better documentation (more conservative)
+    // Very conservative efficiency improvements with Simpl
+    const newDocTime = currentDocTime * 0.8 // 20% reduction (realistic)
+    const newEfficiency = Math.min(currentEfficiency * 1.10, 95) // 10% improvement, capped at 95%
+    const newOccupancy = Math.min(currentOccupancy * 1.02, 98) // 2% improvement, capped at 98% (very conservative)
+    const newDailyRate = avgDailyRate * 1.015 // 1.5% increase through better documentation (very conservative)
     
     const newOccupiedBeds = Math.round(facilitySize * (newOccupancy / 100))
     const newAnnualRevenue = newOccupiedBeds * newDailyRate * 365
     
     const annualSavings = newAnnualRevenue - currentAnnualRevenue
-    const timeSavings = (currentDocTime - newDocTime) * occupiedBeds * 365 // hours saved per year
-    const staffSavings = (timeSavings / 2080) * 45000 // assuming $45k/year per FTE (more conservative)
+    
+    // Time savings calculation - much more conservative approach
+    // Only count time savings that actually reduce staffing costs (not all documentation time is billable)
+    const effectiveTimeSavingsPerResident = Math.min((currentDocTime - newDocTime) * 0.6, 15) // Only 60% of time saved translates to cost savings, max 15min
+    const timeSavingsMinutesPerDay = effectiveTimeSavingsPerResident * occupiedBeds // total effective minutes saved per day
+    const timeSavingsHoursPerYear = (timeSavingsMinutesPerDay / 60) * 365 // convert to hours per year
+    const staffSavings = (timeSavingsHoursPerYear / 2080) * 32000 // reduced to $32k/year per FTE (CNA/LPN level)
     
     // Add implementation and ongoing costs for more realistic calculation
-    const ongoingAnnualCost = implementationCost * 0.15 // 15% annual maintenance/subscription
+    const ongoingAnnualCost = implementationCost * 0.20 // 20% annual maintenance/subscription (realistic)
     const totalAnnualBenefit = annualSavings + staffSavings - ongoingAnnualCost
     
-    const roi = ((totalAnnualBenefit) / implementationCost) * 100
-    const paybackMonths = (implementationCost / (totalAnnualBenefit / 12))
+    const roi = totalAnnualBenefit > 0 ? ((totalAnnualBenefit) / implementationCost) * 100 : -100
+    const paybackMonths = totalAnnualBenefit > 0 ? (implementationCost / (totalAnnualBenefit / 12)) : 999
     
     // Calculate additional meaningful metrics
     const monthlyBenefit = totalAnnualBenefit / 12
     const breakEvenMonths = Math.max(paybackMonths, 1) // Ensure at least 1 month
-    const timeToPositiveFlow = Math.ceil(breakEvenMonths)
+    const timeToPositiveFlow = Math.ceil(Math.min(breakEvenMonths, 60)) // Cap at 60 months
     const threeYearNetBenefit = (totalAnnualBenefit * 3) - implementationCost
     
     return {
       currentAnnualRevenue,
       newAnnualRevenue,
       annualSavings,
-      timeSavings: Math.round(timeSavings),
+      timeSavings: Math.round(timeSavingsHoursPerYear),
       staffSavings,
       totalAnnualBenefit,
       ongoingAnnualCost,
@@ -298,7 +303,7 @@ export default function ROIAnalysis() {
                     <div className="flex justify-between items-center">
                       <span className="text-simpl-dark-grey">Documentation Time</span>
                       <span className="text-simpl-green font-semibold">
-                        {currentDocTime} → {results.newDocTime.toFixed(0)} min (-40%)
+                        {currentDocTime} → {results.newDocTime.toFixed(0)} min (-20%)
                       </span>
                     </div>
                     <div className="flex justify-between items-center">
