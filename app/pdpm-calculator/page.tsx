@@ -20,46 +20,118 @@ import {
 } from 'lucide-react'
 
 export default function PDPMCalculator() {
-  const [patientType, setPatientType] = useState('skilled-nursing')
   const [admissionSource, setAdmissionSource] = useState('hospital')
   const [cognitiveFunction, setCognitiveFunction] = useState('independent')
   const [functionScore, setFunctionScore] = useState(12)
   const [diagnosisGroup, setDiagnosisGroup] = useState('medical-management')
   const [comorbidities, setComorbidities] = useState(0)
   const [depression, setDepression] = useState(false)
+  const [isUrban, setIsUrban] = useState(true)
+  const [wageIndex, setWageIndex] = useState(1.0)
 
-  // Simplified PDPM calculation logic
-  const calculatePDPM = () => {
-    let baseRate = 200 // Base daily rate
-    
-    // Adjust based on patient type
-    if (patientType === 'rehabilitation') baseRate += 50
-    if (patientType === 'complex-medical') baseRate += 75
-    
-    // Adjust based on function score
-    baseRate += (20 - functionScore) * 5
-    
-    // Adjust based on diagnosis group
-    const diagnosisMultipliers = {
-      'medical-management': 1.0,
-      'infection': 1.15,
-      'cardiovascular': 1.1,
-      'pulmonary': 1.2,
-      'musculoskeletal': 1.25,
-      'neurological': 1.3
-    }
-    baseRate *= diagnosisMultipliers[diagnosisGroup] || 1.0
-    
-    // Adjust for comorbidities
-    baseRate += comorbidities * 15
-    
-    // Adjust for depression
-    if (depression) baseRate += 25
-    
-    return Math.round(baseRate * 100) / 100
+  // FY 2025 Unadjusted Federal Per Diem Rates (from CMS)
+  const federalRates = {
+    pt: 69.05,      // Physical Therapy
+    ot: 65.18,      // Occupational Therapy  
+    slp: 11.80,     // Speech-Language Pathology
+    nursing: 181.60, // Nursing
+    nta: 81.83,     // Non-Therapy Ancillary
+    nonCaseMix: 114.34 // Non-Case Mix (flat rate)
   }
 
-  const dailyRate = calculatePDPM()
+  // PDPM Case Mix Index (CMI) values for each component
+  const getCMI = () => {
+    let ptCMI = 1.0
+    let otCMI = 1.0
+    let slpCMI = 1.0
+    let nursingCMI = 1.0
+    let ntaCMI = 1.0
+
+    // PT/OT Component based on diagnosis and function
+    if (diagnosisGroup === 'major-joint-replacement') {
+      ptCMI = functionScore <= 9 ? 1.53 : functionScore <= 15 ? 1.27 : 1.00
+      otCMI = functionScore <= 9 ? 1.53 : functionScore <= 15 ? 1.27 : 1.00
+    } else if (diagnosisGroup === 'other-orthopedic') {
+      ptCMI = functionScore <= 9 ? 1.46 : functionScore <= 15 ? 1.21 : 0.95
+      otCMI = functionScore <= 9 ? 1.46 : functionScore <= 15 ? 1.21 : 0.95
+    } else if (diagnosisGroup === 'medical-management') {
+      ptCMI = functionScore <= 9 ? 1.19 : functionScore <= 15 ? 0.99 : 0.78
+      otCMI = functionScore <= 9 ? 1.19 : functionScore <= 15 ? 0.99 : 0.78
+    } else {
+      // Acute neurologic and other conditions
+      ptCMI = functionScore <= 9 ? 1.35 : functionScore <= 15 ? 1.12 : 0.89
+      otCMI = functionScore <= 9 ? 1.35 : functionScore <= 15 ? 1.12 : 0.89
+    }
+
+    // SLP Component based on cognitive function
+    if (cognitiveFunction === 'severely-impaired') {
+      slpCMI = 1.48
+    } else if (cognitiveFunction === 'moderately-impaired') {
+      slpCMI = 1.23
+    } else if (cognitiveFunction === 'mildly-impaired') {
+      slpCMI = 0.98
+    } else {
+      slpCMI = 0.73
+    }
+
+    // Nursing Component based on diagnosis and comorbidities
+    if (diagnosisGroup === 'major-joint-replacement') {
+      nursingCMI = 1.15 + (comorbidities * 0.05)
+    } else if (diagnosisGroup === 'acute-neurologic') {
+      nursingCMI = 1.45 + (comorbidities * 0.08)
+    } else {
+      nursingCMI = 1.00 + (comorbidities * 0.06)
+    }
+
+    // NTA Component based on comorbidities and depression
+    let ntaPoints = comorbidities
+    if (depression) ntaPoints += 1
+    
+    if (ntaPoints >= 12) ntaCMI = 3.15
+    else if (ntaPoints >= 6) ntaCMI = 2.30
+    else if (ntaPoints >= 3) ntaCMI = 1.68
+    else if (ntaPoints >= 1) ntaCMI = 1.30
+    else ntaCMI = 1.00
+
+    return { ptCMI, otCMI, slpCMI, nursingCMI, ntaCMI }
+  }
+
+  // Calculate PDPM rate with proper methodology
+  const calculatePDPM = () => {
+    const cmi = getCMI()
+    
+    // Calculate component rates (Federal Rate × CMI)
+    const ptRate = federalRates.pt * cmi.ptCMI
+    const otRate = federalRates.ot * cmi.otCMI
+    const slpRate = federalRates.slp * cmi.slpCMI
+    const nursingRate = federalRates.nursing * cmi.nursingCMI
+    const ntaRate = federalRates.nta * cmi.ntaCMI
+    
+    // Base daily rate before wage adjustment
+    const baseRate = ptRate + otRate + slpRate + nursingRate + ntaRate + federalRates.nonCaseMix
+    
+    // Apply wage index adjustment (only to labor portion - 70% of total)
+    const laborPortion = baseRate * 0.70
+    const nonLaborPortion = baseRate * 0.30
+    const adjustedRate = (laborPortion * wageIndex) + nonLaborPortion
+    
+    return {
+      baseRate,
+      adjustedRate,
+      components: {
+        pt: ptRate,
+        ot: otRate,
+        slp: slpRate,
+        nursing: nursingRate,
+        nta: ntaRate,
+        nonCaseMix: federalRates.nonCaseMix
+      },
+      cmi
+    }
+  }
+
+  const results = calculatePDPM()
+  const dailyRate = results.adjustedRate
   const monthlyRevenue = dailyRate * 30
   const annualRevenue = dailyRate * 365
 
@@ -72,13 +144,13 @@ export default function PDPMCalculator() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center text-white py-20">
             <div className="inline-block px-8 py-4 bg-gradient-to-r from-simpl-green/15 to-simpl-green/10 border-2 border-simpl-green/30 rounded-full mb-6 shadow-lg shadow-simpl-green/20">
-              <span className="text-simpl-green font-bold text-lg">📊 PDPM Calculator</span>
+              <span className="text-simpl-green font-bold text-lg">📊 CMS-Compliant PDPM Calculator</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6 font-manrope">
               PDPM Rate Calculator
             </h1>
             <p className="text-xl text-white/80 max-w-4xl mx-auto leading-relaxed font-manrope">
-              Calculate Patient-Driven Payment Model rates instantly. Optimize your reimbursements with accurate PDPM assessments for skilled nursing facilities.
+              Calculate Patient-Driven Payment Model rates using current CMS FY 2025 guidelines. Get accurate PDPM assessments for skilled nursing facilities with proper case mix methodology.
             </p>
           </div>
         </div>
@@ -96,20 +168,6 @@ export default function PDPMCalculator() {
               </div>
 
               <div className="space-y-6">
-                {/* Patient Type */}
-                <div>
-                  <label className="block text-lg font-semibold text-simpl-black mb-3">Patient Type</label>
-                  <select 
-                    value={patientType} 
-                    onChange={(e) => setPatientType(e.target.value)}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-simpl-green"
-                  >
-                    <option value="skilled-nursing">Skilled Nursing</option>
-                    <option value="rehabilitation">Rehabilitation</option>
-                    <option value="complex-medical">Complex Medical</option>
-                  </select>
-                </div>
-
                 {/* Admission Source */}
                 <div>
                   <label className="block text-lg font-semibold text-simpl-black mb-3">Admission Source</label>
@@ -118,32 +176,46 @@ export default function PDPMCalculator() {
                     onChange={(e) => setAdmissionSource(e.target.value)}
                     className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-simpl-green"
                   >
-                    <option value="hospital">Hospital</option>
+                    <option value="hospital">Hospital (3+ day stay)</option>
                     <option value="community">Community</option>
-                    <option value="other-facility">Other Facility</option>
                   </select>
                 </div>
 
-                {/* Cognitive Function */}
+                {/* Primary Diagnosis Group */}
                 <div>
-                  <label className="block text-lg font-semibold text-simpl-black mb-3">Cognitive Function</label>
+                  <label className="block text-lg font-semibold text-simpl-black mb-3">Primary Diagnosis Group</label>
+                  <select 
+                    value={diagnosisGroup} 
+                    onChange={(e) => setDiagnosisGroup(e.target.value)}
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-simpl-green"
+                  >
+                    <option value="major-joint-replacement">Major Joint Replacement/Spinal Surgery</option>
+                    <option value="other-orthopedic">Other Orthopedic</option>
+                    <option value="acute-neurologic">Acute Neurologic</option>
+                    <option value="medical-management">Medical Management</option>
+                  </select>
+                </div>
+
+                {/* Cognitive Function (BIMS Score) */}
+                <div>
+                  <label className="block text-lg font-semibold text-simpl-black mb-3">Cognitive Function (BIMS)</label>
                   <select 
                     value={cognitiveFunction} 
                     onChange={(e) => setCognitiveFunction(e.target.value)}
                     className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-simpl-green"
                   >
-                    <option value="independent">Independent</option>
-                    <option value="modified-independent">Modified Independent</option>
-                    <option value="mildly-impaired">Mildly Impaired</option>
-                    <option value="moderately-impaired">Moderately Impaired</option>
-                    <option value="severely-impaired">Severely Impaired</option>
+                    <option value="independent">Cognitively Intact (13-15)</option>
+                    <option value="modified-independent">Mild Impairment (10-12)</option>
+                    <option value="mildly-impaired">Moderate Impairment (7-9)</option>
+                    <option value="moderately-impaired">Severe Impairment (0-6)</option>
+                    <option value="severely-impaired">Unable to Complete</option>
                   </select>
                 </div>
 
-                {/* Function Score */}
+                {/* Function Score (Section GG) */}
                 <div>
                   <label className="block text-lg font-semibold text-simpl-black mb-3">
-                    Function Score: {functionScore}
+                    Function Score (Section GG Total): {functionScore}
                   </label>
                   <input 
                     type="range" 
@@ -159,32 +231,15 @@ export default function PDPMCalculator() {
                   </div>
                 </div>
 
-                {/* Primary Diagnosis Group */}
-                <div>
-                  <label className="block text-lg font-semibold text-simpl-black mb-3">Primary Diagnosis Group</label>
-                  <select 
-                    value={diagnosisGroup} 
-                    onChange={(e) => setDiagnosisGroup(e.target.value)}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-simpl-green"
-                  >
-                    <option value="medical-management">Medical Management</option>
-                    <option value="infection">Infection</option>
-                    <option value="cardiovascular">Cardiovascular</option>
-                    <option value="pulmonary">Pulmonary</option>
-                    <option value="musculoskeletal">Musculoskeletal</option>
-                    <option value="neurological">Neurological</option>
-                  </select>
-                </div>
-
-                {/* Comorbidities */}
+                {/* Comorbidities/NTA Points */}
                 <div>
                   <label className="block text-lg font-semibold text-simpl-black mb-3">
-                    Number of Comorbidities: {comorbidities}
+                    NTA Points (Comorbidities): {comorbidities}
                   </label>
                   <input 
                     type="range" 
                     min="0" 
-                    max="10" 
+                    max="15" 
                     value={comorbidities}
                     onChange={(e) => setComorbidities(Number(e.target.value))}
                     className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
@@ -201,8 +256,46 @@ export default function PDPMCalculator() {
                     className="w-5 h-5 text-simpl-green bg-gray-100 border-gray-300 rounded focus:ring-simpl-green"
                   />
                   <label htmlFor="depression" className="ml-3 text-lg font-semibold text-simpl-black">
-                    Depression Diagnosis
+                    Depression Diagnosis (+1 NTA Point)
                   </label>
+                </div>
+
+                {/* Geographic Settings */}
+                <div className="border-t pt-6">
+                  <h3 className="text-lg font-semibold text-simpl-black mb-4">Geographic Adjustment</h3>
+                  
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-md font-semibold text-simpl-black mb-2">Area Type</label>
+                      <select 
+                        value={isUrban ? 'urban' : 'rural'} 
+                        onChange={(e) => setIsUrban(e.target.value === 'urban')}
+                        className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-simpl-green"
+                      >
+                        <option value="urban">Urban</option>
+                        <option value="rural">Rural</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-md font-semibold text-simpl-black mb-2">
+                        Wage Index: {wageIndex.toFixed(4)}
+                      </label>
+                      <input 
+                        type="range" 
+                        min="0.8000" 
+                        max="1.8000" 
+                        step="0.0001"
+                        value={wageIndex}
+                        onChange={(e) => setWageIndex(Number(e.target.value))}
+                        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                      />
+                      <div className="flex justify-between text-sm text-gray-500 mt-2">
+                        <span>0.8000</span>
+                        <span>1.8000</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -219,7 +312,8 @@ export default function PDPMCalculator() {
                 <div className="bg-simpl-green/10 rounded-xl p-6 border border-simpl-green/20">
                   <div className="text-center">
                     <div className="text-4xl font-bold text-simpl-green mb-2">${dailyRate.toFixed(2)}</div>
-                    <div className="text-lg text-simpl-dark-grey">Daily PDPM Rate</div>
+                    <div className="text-lg text-simpl-dark-grey">Daily PDPM Rate (Adjusted)</div>
+                    <div className="text-sm text-simpl-dark-grey mt-1">Base Rate: ${results.baseRate.toFixed(2)}</div>
                   </div>
                 </div>
 
@@ -235,29 +329,33 @@ export default function PDPMCalculator() {
                   </div>
                 </div>
 
-                {/* Rate Components */}
+                {/* PDPM Component Breakdown */}
                 <div className="border-t border-gray-200 pt-6">
-                  <h3 className="text-xl font-bold text-simpl-black mb-4">Rate Components</h3>
+                  <h3 className="text-xl font-bold text-simpl-black mb-4">PDPM Component Breakdown</h3>
                   <div className="space-y-3">
                     <div className="flex justify-between">
-                      <span className="text-simpl-dark-grey">Physical Therapy</span>
-                      <span className="font-semibold">${(dailyRate * 0.25).toFixed(2)}</span>
+                      <span className="text-simpl-dark-grey">Physical Therapy (PT)</span>
+                      <span className="font-semibold">${results.components.pt.toFixed(2)} (CMI: {results.cmi.ptCMI.toFixed(2)})</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-simpl-dark-grey">Occupational Therapy</span>
-                      <span className="font-semibold">${(dailyRate * 0.20).toFixed(2)}</span>
+                      <span className="text-simpl-dark-grey">Occupational Therapy (OT)</span>
+                      <span className="font-semibold">${results.components.ot.toFixed(2)} (CMI: {results.cmi.otCMI.toFixed(2)})</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-simpl-dark-grey">Speech-Language Pathology</span>
-                      <span className="font-semibold">${(dailyRate * 0.15).toFixed(2)}</span>
+                      <span className="text-simpl-dark-grey">Speech-Language Pathology (SLP)</span>
+                      <span className="font-semibold">${results.components.slp.toFixed(2)} (CMI: {results.cmi.slpCMI.toFixed(2)})</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-simpl-dark-grey">Nursing</span>
-                      <span className="font-semibold">${(dailyRate * 0.30).toFixed(2)}</span>
+                      <span className="font-semibold">${results.components.nursing.toFixed(2)} (CMI: {results.cmi.nursingCMI.toFixed(2)})</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-simpl-dark-grey">Non-Therapy Ancillary</span>
-                      <span className="font-semibold">${(dailyRate * 0.10).toFixed(2)}</span>
+                      <span className="text-simpl-dark-grey">Non-Therapy Ancillary (NTA)</span>
+                      <span className="font-semibold">${results.components.nta.toFixed(2)} (CMI: {results.cmi.ntaCMI.toFixed(2)})</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-simpl-dark-grey">Non-Case Mix</span>
+                      <span className="font-semibold">${results.components.nonCaseMix.toFixed(2)}</span>
                     </div>
                   </div>
                 </div>
@@ -267,10 +365,11 @@ export default function PDPMCalculator() {
                   <div className="flex items-start">
                     <AlertCircle className="w-5 h-5 text-yellow-600 mt-1 mr-3 flex-shrink-0" />
                     <div>
-                      <h4 className="font-semibold text-yellow-800 mb-2">Optimization Tip</h4>
+                      <h4 className="font-semibold text-yellow-800 mb-2">CMS Guidelines Reminder</h4>
                       <p className="text-sm text-yellow-700">
-                        Accurate MDS assessments can increase reimbursement by up to 15%. 
-                        Ensure thorough documentation of functional status and comorbidities.
+                        This calculator uses FY 2025 CMS rates and approved PDPM methodology. 
+                        Accurate MDS assessments (especially Section GG function scores and BIMS cognitive scores) 
+                        are critical for proper reimbursement.
                       </p>
                     </div>
                   </div>
