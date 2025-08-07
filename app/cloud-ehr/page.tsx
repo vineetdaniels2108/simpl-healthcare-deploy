@@ -86,7 +86,7 @@ export default function CloudEHR() {
       title="Cloud EHR Made Simpl"
       subtitle="☁️ AI-Powered EHR Platform"
       description="Effortlessly manage and organize your practice with our web-based electronic health record platform. Experience simplicity with complete medical histories, AI note taking, unlimited templates, and more."
-      heroImage="/vwcfva.png"
+      heroImage="/cloud-ehr-dashboard.png"
       heroImageAlt="Cloud EHR Dashboard"
       showHeroStats={true}
       heroStats={heroStats}
@@ -136,7 +136,7 @@ export default function CloudEHR() {
             <div className="relative">
               <div className="bg-gradient-to-br from-simpl-green/10 to-simpl-blue/10 rounded-2xl p-8">
                 <img
-                  src="/sadasad.png"
+                  src="/unified-ehr-portal.png"
                   alt="Unified EHR Portal"
                   className="w-full h-auto rounded-xl shadow-lg"
                 />
