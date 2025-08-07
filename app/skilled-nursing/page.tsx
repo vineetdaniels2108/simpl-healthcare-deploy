@@ -150,7 +150,7 @@ export default function SkilledNursing() {
       title="Skilled Nursing Software"
       subtitle="🏥 PDPM-Optimized EMR Platform"
       description="Boost PDPM revenue, reduce readmissions, and ace every survey with our skilled nursing EMR. Native PointClickCare integration, Five-Star compliance tools, and AI-powered documentation that saves 2.4 hours per nursing shift."
-      heroImage="/skilled-nursing-dashboard.png"
+      heroImage="/skilled-nursing-hero.png"
       heroImageAlt="Skilled Nursing Management Dashboard"
       showHeroStats={true}
       heroStats={heroStats}

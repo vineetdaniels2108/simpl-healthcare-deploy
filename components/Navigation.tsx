@@ -42,7 +42,7 @@ const Navigation = () => {
       title: 'Providers',
       items: [
         { name: 'Behavioral Health', href: '/behavioral-health' },
-        { name: 'Primary Care Overview', href: '/primary-care' },
+        { name: 'Primary Care', href: '/primary-care' },
         { name: 'Family Medicine', href: '/family-medicine' },
         { name: 'Internal Medicine', href: '/internal-medicine' },
         { name: 'Pediatrics', href: '/pediatrics' },

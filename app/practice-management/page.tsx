@@ -77,7 +77,7 @@ export default function PracticeManagement() {
       title="Practice Management"
       subtitle="🏥 All-in-One Operations"
       description="Operate your practice efficiently from one centralized portal. Easily manage appointments, automate day-to-day functions, and focus on what matters most - patient care."
-      heroImage="/practice-management-dashboard.png"
+      heroImage="/practice-management-hero.png"
       heroImageAlt="Practice Management Dashboard"
       showHeroStats={true}
       heroStats={heroStats}
@@ -125,7 +125,7 @@ export default function PracticeManagement() {
             <div className="relative">
               <div className="bg-gradient-to-br from-simpl-green/10 to-simpl-blue/10 rounded-2xl p-8">
                 <img
-                  src="/practice-dashboard.png"
+                  src="/practice-management-digital.png"
                   alt="Practice Management Dashboard"
                   className="w-full h-auto rounded-xl shadow-lg"
                 />

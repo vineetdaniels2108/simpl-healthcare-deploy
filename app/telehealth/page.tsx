@@ -58,7 +58,7 @@ export default function Telehealth() {
       title="Telehealth"
       subtitle="📱 Virtual Care Platform"
       description="Conduct seamless virtual visits with fully integrated EHR and AI features. HIPAA-compliant video sessions with complete scheduling, charting, and billing integration."
-      heroImage="/telehealth-platform.png"
+      heroImage="/telehealth-hero.png"
       heroImageAlt="Telehealth Platform Interface"
       showHeroStats={true}
       heroStats={heroStats}
@@ -106,7 +106,7 @@ export default function Telehealth() {
             <div className="relative">
               <div className="bg-gradient-to-br from-simpl-green/10 to-simpl-blue/10 rounded-2xl p-8">
                 <img
-                  src="/telehealth-interface.png"
+                  src="/telehealth-digital.png"
                   alt="Telehealth Video Interface"
                   className="w-full h-auto rounded-xl shadow-lg"
                 />
@@ -244,7 +244,7 @@ export default function Telehealth() {
             <div className="relative">
               <div className="bg-gradient-to-br from-simpl-green/10 to-simpl-blue/10 rounded-2xl p-8">
                 <img
-                  src="/telehealth-benefits.png"
+                  src="/telehealth-digital-2.png"
                   alt="Telehealth Benefits"
                   className="w-full h-auto rounded-xl shadow-lg"
                 />

@@ -77,7 +77,7 @@ export default function Interoperability() {
       title="Interoperability"
       subtitle="🔗 Connected Healthcare"
       description="Improve workflow efficiency with quick access to extensive medical records from 90% of hospitals and clinics in the U.S. Experience seamless data exchange and integration."
-      heroImage="/interoperability-network.png"
+      heroImage="/interoperability-hero.png"
       heroImageAlt="Healthcare Interoperability Network"
       showHeroStats={true}
       heroStats={heroStats}
@@ -125,7 +125,7 @@ export default function Interoperability() {
             <div className="relative">
               <div className="bg-gradient-to-br from-simpl-green/10 to-simpl-blue/10 rounded-2xl p-8">
                 <img
-                  src="/interoperability-dashboard.png"
+                  src="/interoperability-digital.png"
                   alt="Interoperability Dashboard"
                   className="w-full h-auto rounded-xl shadow-lg"
                 />

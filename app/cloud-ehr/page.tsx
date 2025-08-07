@@ -86,7 +86,7 @@ export default function CloudEHR() {
       title="Cloud EHR Made Simpl"
       subtitle="☁️ AI-Powered EHR Platform"
       description="Effortlessly manage and organize your practice with our web-based electronic health record platform. Experience simplicity with complete medical histories, AI note taking, unlimited templates, and more."
-      heroImage="/vwcfva.png"
+      heroImage="/cloudehr-image-1.png"
       heroImageAlt="Cloud EHR Dashboard"
       showHeroStats={true}
       heroStats={heroStats}
@@ -136,8 +136,8 @@ export default function CloudEHR() {
             <div className="relative">
               <div className="bg-gradient-to-br from-simpl-green/10 to-simpl-blue/10 rounded-2xl p-8">
                 <img
-                  src="/sadasad.png"
-                  alt="Unified EHR Portal"
+                  src="/cloudehr-image-2.png"
+                  alt="Cloud EHR Interface"
                   className="w-full h-auto rounded-xl shadow-lg"
                 />
               </div>
@@ -213,6 +213,8 @@ export default function CloudEHR() {
                 </div>
               ))}
             </div>
+
+            {/* Removed large circular illustration per design feedback */}
           </div>
         </div>
       </section>
@@ -274,35 +276,11 @@ export default function CloudEHR() {
 
             <div className="relative">
               <div className="bg-gradient-to-br from-simpl-green/5 to-simpl-blue/5 rounded-2xl p-8">
-                <div className="bg-white rounded-xl shadow-xl p-6">
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <h4 className="text-lg font-bold text-simpl-black">Patient Chart - John Smith</h4>
-                      <span className="px-3 py-1 bg-simpl-green/10 text-simpl-green rounded-full text-sm font-semibold">
-                        Auto-completing...
-                      </span>
-                    </div>
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-simpl-green" />
-                        <span className="text-simpl-dark-grey">Chief Complaint: Hypertension follow-up</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-simpl-green" />
-                        <span className="text-simpl-dark-grey">Vitals: BP 140/90, HR 72, auto-populated</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-simpl-green" />
-                        <span className="text-simpl-dark-grey">Assessment: I10 (Essential hypertension) - suggested</span>
-                      </div>
-                    </div>
-                    <div className="mt-4 pt-4 border-t border-simpl-grey">
-                      <p className="text-sm text-simpl-dark-grey">
-                        <strong>AI Suggestion:</strong> Consider medication adherence review based on patient history
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                <img
+                  src="/charting-interface.png"
+                  alt="Smart charting interface"
+                  className="w-full h-auto rounded-xl shadow-lg"
+                />
               </div>
             </div>
           </div>

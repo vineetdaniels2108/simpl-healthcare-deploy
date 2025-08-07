@@ -127,7 +127,7 @@ export default function AssistedLiving() {
       title="Assisted Living Software"
       subtitle="🏡 Complete Management Platform"
       description="Boost occupancy rates, reduce staff turnover, and ensure compliance with our comprehensive assisted living management platform. Real-time census tracking, eMAR integration, and family engagement tools that drive results."
-      heroImage="/assisted-living-dashboard.png"
+      heroImage="/assisted-living-hero.png"
       heroImageAlt="Assisted Living Management Dashboard"
       showHeroStats={true}
       heroStats={heroStats}

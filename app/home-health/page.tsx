@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import PageTemplate from '../../components/PageTemplate'
 import Link from 'next/link'
-import { Calendar, ArrowRight, Play, TrendingUp, DollarSign, Heart, Star, Users, Database, Shield, Clock, MapPin, Smartphone, Brain, CheckCircle, FileText, Activity, Zap, AlertTriangle, Target, BarChart3, Award } from 'lucide-react'
+import { Calendar, ArrowRight, TrendingUp, DollarSign, Heart, Star, Users, Database, Shield, Clock, MapPin, Smartphone, Brain, CheckCircle, FileText, Activity, Zap, AlertTriangle, Target, BarChart3, Award } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Home Health Software - PDGM, OASIS & EVV Platform | Simpl Healthcare',
@@ -128,43 +128,7 @@ export default function HomeHealth() {
       showHeroStats={true}
       heroStats={heroStats}
     >
-      {/* Hero Visual Description */}
-      <section className="py-20 bg-gradient-to-r from-simpl-green/5 to-simpl-blue/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl p-8 shadow-lg">
-            <div className="relative">
-              <img
-                src="/home-health-split-screen.png"
-                alt="Nurse dictating on phone in patient's living room with dashboard showing LUPA risk alerts"
-                className="w-full h-64 object-cover rounded-xl"
-              />
-              <div className="absolute inset-0 bg-black/20 flex items-center justify-center rounded-xl">
-                <button className="bg-white/90 hover:bg-white rounded-full p-4 transition-all duration-300 transform hover:scale-110">
-                  <Play className="w-8 h-8 text-simpl-green ml-1" />
-                </button>
-              </div>
-            </div>
-            <p className="text-center text-simpl-dark-grey mt-4 font-medium">
-              Watch how clinicians dictate notes in the field while our dashboard auto-flags LUPA risks in real-time
-            </p>
-
-            {/* Hero CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-              <button className="bg-simpl-green hover:bg-simpl-dark-green text-white px-8 py-4 rounded-xl font-bold text-lg btn-hover inline-flex items-center justify-center gap-2">
-                See How It Works
-                <ArrowRight className="w-5 h-5" />
-              </button>
-              <Link
-                href="/book-demo"
-                className="border-2 border-simpl-green hover:bg-simpl-green hover:text-white text-simpl-green px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 inline-flex items-center justify-center gap-2"
-              >
-                Book a Demo
-                <Calendar className="w-5 h-5" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* What Home-Health Leaders Sweat */}
       <section className="py-20 bg-white">
@@ -348,10 +312,6 @@ export default function HomeHealth() {
               Book a Demo
               <Calendar className="w-5 h-5" />
             </Link>
-            <button className="border-2 border-simpl-green hover:bg-simpl-green hover:text-white text-simpl-green px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 inline-flex items-center justify-center gap-2">
-              Watch 2-Minute Overview
-              <Play className="w-5 h-5" />
-            </button>
           </div>
         </div>
       </section>

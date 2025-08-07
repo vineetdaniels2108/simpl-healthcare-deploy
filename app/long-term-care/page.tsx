@@ -268,19 +268,23 @@ export default function LongTermCare() {
           <div className="grid lg:grid-cols-3 gap-8">
             {careTypes.map((care, index) => (
               <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group">
-                <div className="relative">
+                {/* Replaced image banner with large icon area */}
+                <div className={`h-48 flex items-center justify-center ${
+                  care.title.includes('Assisted Living') ? 'bg-simpl-blue/10' : 'bg-simpl-green/10'
+                }`}>
                   <img
-                    src={care.image}
-                    alt={care.title}
-                    className="w-full h-48 object-cover"
+                    src={
+                      care.title.includes('Skilled Nursing') ? '/icon-snf.svg' :
+                      care.title.includes('Assisted Living') ? '/icon-al.svg' :
+                      '/icon-home-health.svg'
+                    }
+                    alt={`${care.title} icon`}
+                    className="w-20 h-20 md:w-24 md:h-24"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <h3 className="text-xl font-bold mb-1">{care.title}</h3>
-                  </div>
                 </div>
                 
                 <div className="p-6">
+                  <h3 className="text-2xl font-bold text-simpl-black mb-2 font-manrope">{care.title}</h3>
                   <p className="text-simpl-dark-grey mb-4 font-manrope leading-relaxed">
                     {care.description}
                   </p>
