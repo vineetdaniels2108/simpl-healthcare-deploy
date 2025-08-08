@@ -1,6 +1,34 @@
 import { NextResponse } from 'next/server'
 import knowledgeBase from '../../../../lib/support/knowledge'
 
+// Ensure Node runtime on Vercel and disable caching
+export const runtime = 'nodejs'
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
+// Basic GET/OPTIONS handlers to aid health-checks and preflight requests
+export async function GET() {
+  return NextResponse.json({ status: 'ok', route: '/api/support/ask', methods: ['POST'] }, {
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,POST,OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+    }
+  })
+}
+
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 204,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,POST,OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      'Access-Control-Max-Age': '86400'
+    }
+  })
+}
+
 function normalizeQuery(input: string): string {
   return input
     .toLowerCase()
@@ -98,9 +126,12 @@ export async function POST(req: Request) {
       .join('\n\n')
 
     // Enrich context with excerpts fetched from top-matching documentation URLs
-    async function fetchExcerpt(url: string): Promise<string> {
+    async function fetchExcerpt(url: string, timeoutMs: number): Promise<string> {
       try {
-        const res = await fetch(url, { method: 'GET' })
+        const controller = new AbortController()
+        const timeout = setTimeout(() => controller.abort(), timeoutMs)
+        const res = await fetch(url, { method: 'GET', signal: controller.signal, cache: 'no-store' as RequestCache })
+        clearTimeout(timeout)
         const html = await res.text()
         const imgAlts = Array.from(html.matchAll(/<img[^>]*alt="([^"]+)"[^>]*>/gi)).map((m) => m[1]).slice(0, 5)
         const text = html
@@ -118,8 +149,11 @@ export async function POST(req: Request) {
       }
     }
 
-    const topUrls = Array.from(new Set(ranked.slice(0, 5).map((r) => r.entry.url))).slice(0, 5)
-    const fetched = await Promise.all(topUrls.map((u) => fetchExcerpt(u)))
+    const isProd = process.env.NODE_ENV === 'production'
+    const perFetchTimeout = isProd ? 1500 : 3000
+    const maxUrls = isProd ? 2 : 5
+    const topUrls = Array.from(new Set(ranked.slice(0, maxUrls).map((r) => r.entry.url))).slice(0, maxUrls)
+    const fetched = await Promise.all(topUrls.map((u) => fetchExcerpt(u, perFetchTimeout)))
     const richContext = `${context}\n\n---\nAdditional Excerpts:\n${fetched.join('\n\n')}`
 
     const prompt = `You are a support assistant for Simpl Healthcare. Provide clear, numbered, step-by-step instructions based on the provided documentation context. If unsure, say so and suggest the closest section.\n\nStrict formatting rules:\n- Do NOT output JSON or code blocks.\n- Do NOT include a links section in your answer (the system will attach link chips separately).\n- Use concise numbered steps and short sentences.\n- When helpful, reference screenshots by their alt text from the context (e.g., \"See screenshot: ...\").\n\nQuestion: ${original}\n\nContext:\n${richContext}`
