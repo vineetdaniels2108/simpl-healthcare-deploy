@@ -11,30 +11,40 @@ export default function Team() {
       name: "Vineet Daniels",
       title: "Chief Executive Officer & Co-Founder",
       image: "/vineet-daniels.jpg",
+      linkedin: "https://www.linkedin.com/in/vineetdaniels/",
+      email: "vineetdaniels@simplhealthcare.com",
       bio: "As CEO and Co-Founder, Vineet drives Simpl's corporate vision, strategy and execution. Prior to co-founding Simpl Healthcare, he led product innovation teams at Amazon and Google on initiatives including deployment of Covid facilities in the US and HIPAA Compliance Solutions on AWS. He is a recipient of 40 under 40 Winner by Healthcare Innovation."
     },
     {
       name: "Isaac Chapa",
       title: "Chief Technology Officer & Co-Founder", 
       image: "/isaac-chapa.jpg",
+      linkedin: "https://www.linkedin.com/in/ichapa/",
+      email: "ichapa@simplhealthcare.com",
       bio: "As CTO and Co-Founder, Isaac oversees the development and implementation of innovative Simpl healthcare solutions. Prior to joining Simpl, he founded CSIdentity Corporation which was later acquired by Experian. Isaac has also held leadership roles at various technology companies where he specialized in scalable software architecture and data security."
     },
     {
       name: "John Menchaca",
       title: "Chief Legal Officer",
       image: "/john-menchaca.jpg",
+      linkedin: "https://www.linkedin.com/in/john-menchaca-99112323/",
+      email: "John.Menchaca@michaelbest.com",
       bio: "John leads Simpl's legal strategy, compliance initiatives, and risk management. With over 15 years of healthcare law experience, he has guided numerous healthcare technology companies through complex regulatory landscapes. John holds a JD from Harvard Law School and has been recognized as a leading healthcare attorney by multiple industry publications."
     },
     {
       name: "Lisa Weaver",
       title: "Sr. Director, Partner Operations",
       image: "/lisa-weaver.jpg",
+      linkedin: "https://www.linkedin.com/in/lisalweaver/",
+      email: "lweaver@simplhealthcare.com",
       bio: "Lisa oversees Simpl's strategic partnerships and business development initiatives. She brings extensive experience in healthcare operations and has successfully launched partnerships with major health systems across the United States. Lisa holds an MBA from Wharton and has a proven track record of scaling healthcare technology operations."
     },
     {
       name: "Dave Szabo",
       title: "VP, Engineering",
-      image: "/dave-szabo.jpg",
+      image: "/dave-szabo.png",
+      linkedin: "https://www.linkedin.com/in/dszabo/",
+      email: "daveszabo@simplhealthcare.com",
       bio: "Dave leads Simpl's engineering team and technical product development. With over 12 years of experience in healthcare technology, he has architected scalable systems that process millions of healthcare transactions daily. Dave holds a Master's in Computer Science from Stanford and has previously led engineering teams at several successful healthcare startups."
     }
   ]
@@ -92,14 +102,28 @@ export default function Team() {
                       {member.title}
                     </p>
                     
-                    {/* Social Links Placeholder */}
+                    {/* Social Links */}
                     <div className="flex gap-3">
-                      <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors cursor-pointer">
-                        <Linkedin className="w-5 h-5 text-white" />
-                      </div>
-                      <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors cursor-pointer">
-                        <Mail className="w-5 h-5 text-white" />
-                      </div>
+                      {member.linkedin && (
+                        <a
+                          href={member.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${member.name} LinkedIn`}
+                          className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+                        >
+                          <Linkedin className="w-5 h-5 text-white" />
+                        </a>
+                      )}
+                      {member.email && (
+                        <a
+                          href={`mailto:${member.email}`}
+                          aria-label={`${member.name} Email`}
+                          className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+                        >
+                          <Mail className="w-5 h-5 text-white" />
+                        </a>
+                      )}
                     </div>
                   </div>
                   

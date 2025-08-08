@@ -83,11 +83,15 @@ const PageTemplate = ({
             
             {finalHeroImage && (
               <div className="relative">
-                <img
-                  src={finalHeroImage}
-                  alt={finalHeroImageAlt}
-                  className="rounded-lg shadow-2xl"
-                />
+                <div className="relative rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10 bg-white/70 backdrop-blur-sm">
+                  <img
+                    src={finalHeroImage}
+                    alt={finalHeroImageAlt}
+                    className="w-full h-auto object-cover"
+                  />
+                  {/* Teal tint to harmonize mismatched palettes */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-simpl-green/20 to-simpl-blue/20 mix-blend-multiply" />
+                </div>
               </div>
             )}
           </div>

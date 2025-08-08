@@ -20,7 +20,7 @@ export default function InternalMedicine() {
       title="Internal Medicine"
       subtitle="🩺 Advanced Adult Care"
       description="Sophisticated EHR solutions designed for internal medicine practices. Manage complex adult patients with advanced clinical decision support, comprehensive chronic disease management, and integrated diagnostic tools."
-      heroImage="/internal-medicine-dashboard.png"
+      heroImage="/internal-medicine-hero.png"
       heroImageAlt="Internal Medicine EHR Dashboard"
       showHeroStats={true}
       heroStats={heroStats}

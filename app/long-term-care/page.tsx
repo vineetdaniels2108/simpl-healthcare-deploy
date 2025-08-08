@@ -179,7 +179,7 @@ export default function LongTermCare() {
               <div className="bg-gradient-to-br from-simpl-green/10 to-simpl-blue/10 rounded-2xl p-8">
                 <div className="relative bg-white rounded-xl shadow-xl overflow-hidden">
                   <img
-                    src="/long-term-care-hero.png"
+                    src="/long-term-care-image-1.png"
                     alt="Long-term care platform demonstration"
                     className="w-full h-auto"
                   />

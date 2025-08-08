@@ -77,7 +77,7 @@ export default function Charting() {
       title="Smart Charting"
       subtitle="📝 All Patient Paperwork at Your Fingertips"
       description="Securely access patient information on any device while giving your patients an experience they expect. Purpose-built charting that adapts to your unique care model."
-      heroImage="/charting-interface.png"
+      heroImage="/smart-charting-hero.png"
       heroImageAlt="Smart Charting Interface"
       showHeroStats={true}
       heroStats={heroStats}
@@ -125,7 +125,7 @@ export default function Charting() {
             <div className="relative">
               <div className="bg-gradient-to-br from-simpl-green/10 to-simpl-blue/10 rounded-2xl p-8">
                 <img
-                  src="/charting-dashboard.png"
+                  src="/smart-charting-digital.png"
                   alt="Charting Dashboard"
                   className="w-full h-auto rounded-xl shadow-lg"
                 />

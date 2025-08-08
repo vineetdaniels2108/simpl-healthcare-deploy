@@ -277,8 +277,8 @@ export default function CloudEHR() {
             <div className="relative">
               <div className="bg-gradient-to-br from-simpl-green/5 to-simpl-blue/5 rounded-2xl p-8">
                 <img
-                  src="/charting-interface.png"
-                  alt="Smart charting interface"
+                  src="/ai-patient-chart-interface.png"
+                  alt="AI-powered smart charting interface"
                   className="w-full h-auto rounded-xl shadow-lg"
                 />
               </div>
@@ -287,51 +287,6 @@ export default function CloudEHR() {
         </div>
       </section>
 
-      {/* Demo Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="relative">
-              <div className="bg-gradient-to-br from-simpl-green/10 to-simpl-blue/10 rounded-2xl p-8">
-                <div className="relative">
-                  <img
-                    src="/demo-preview.png"
-                    alt="Watch Cloud EHR Demo"
-                    className="w-full h-auto rounded-xl shadow-lg"
-                  />
-                  <div className="absolute inset-0 bg-black/20 rounded-xl flex items-center justify-center">
-                    <button className="bg-simpl-green hover:bg-simpl-dark-green text-white rounded-full p-6 transform hover:scale-110 transition-all duration-300 shadow-2xl">
-                      <Play className="w-12 h-12 ml-1" />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-simpl-black mb-8 font-manrope">
-                Watch a Demo
-              </h2>
-              <p className="text-xl text-simpl-dark-grey font-manrope leading-relaxed mb-8">
-                See Cloud EHR in action. Discover how our platform can transform your practice workflow 
-                and improve patient outcomes with real-world demonstrations.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a
-                  href="/book-demo"
-                  className="bg-simpl-green hover:bg-simpl-dark-green text-white px-8 py-4 rounded-xl font-bold text-lg btn-hover inline-block text-center"
-                >
-                  Schedule Live Demo
-                </a>
-                <button className="border-2 border-simpl-green hover:bg-simpl-green hover:text-white text-simpl-green px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300">
-                  <Play className="w-5 h-5 inline mr-2" />
-                  Watch Video
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Benefits Section */}
       <section className="py-20">

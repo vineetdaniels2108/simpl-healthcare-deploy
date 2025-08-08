@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone } from 'lucide-react'
+import { Linkedin, Mail, Phone } from 'lucide-react'
 
 const Footer = () => {
   return (
@@ -131,16 +131,7 @@ const Footer = () => {
 
         {/* Social Links */}
         <div className="flex justify-center space-x-8 mb-12">
-          <a href="https://www.facebook.com/simplhealthcare" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors">
-            <Facebook className="w-8 h-8" />
-          </a>
-          <a href="https://twitter.com/simplhealthcare" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors">
-            <Twitter className="w-8 h-8" />
-          </a>
-          <a href="https://www.instagram.com/simplhealthcare" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors">
-            <Instagram className="w-8 h-8" />
-          </a>
-          <a href="https://www.linkedin.com/company/simpl-healthcare/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors">
+          <a href="https://www.linkedin.com/company/simpl-healthcare/?viewAsMember=true" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors">
             <Linkedin className="w-8 h-8" />
           </a>
         </div>

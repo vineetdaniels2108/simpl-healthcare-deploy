@@ -120,7 +120,7 @@ export default function HomeHealth() {
 
   return (
     <PageTemplate
-      title="Home Health Software That Nails PDGM, OASIS, and EVV—Without Driving Clinicians Crazy"
+      title="Home Health Software for PDGM, OASIS & EVV"
       subtitle="🏠 Faster notes, fewer rehospitalizations, ↑ revenue per episode. Simpl turns every visit into clean data and clean dollars."
       description="PDGM optimization, OASIS automation, and EVV compliance platform that transforms home health operations. Real-time LUPA alerts, mobile-first charting, and predictive analytics that boost revenue and reduce readmissions."
       heroImage="/home-health-hero.png"

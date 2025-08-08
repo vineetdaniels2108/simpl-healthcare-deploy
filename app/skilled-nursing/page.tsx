@@ -284,8 +284,8 @@ export default function SkilledNursing() {
             <div className="relative">
               <div className="bg-gradient-to-br from-simpl-green/10 to-simpl-blue/10 rounded-2xl p-8">
                 <img
-                  src="/skilled-nursing-roi.png"
-                  alt="Skilled Nursing ROI Dashboard"
+                  src="/skilled-nursing-digital.png"
+                  alt="Skilled Nursing – Real Revenue & Efficiency Gains"
                   className="w-full h-auto rounded-xl shadow-lg"
                 />
               </div>

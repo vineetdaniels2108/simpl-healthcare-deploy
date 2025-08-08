@@ -187,10 +187,13 @@ export default function MedicareAdvantage() {
 
           {/* Hero CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
-            <button className="bg-simpl-green hover:bg-simpl-dark-green text-white px-8 py-4 rounded-xl font-bold text-lg btn-hover inline-flex items-center justify-center gap-2">
+            <Link
+              href="/book-demo"
+              className="bg-simpl-green hover:bg-simpl-dark-green text-white px-8 py-4 rounded-xl font-bold text-lg btn-hover inline-flex items-center justify-center gap-2"
+            >
               See Risk Adjustment in Action
               <Play className="w-5 h-5" />
-            </button>
+            </Link>
             <Link
               href="/book-demo"
               className="border-2 border-simpl-green hover:bg-simpl-green hover:text-white text-simpl-green px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 inline-flex items-center justify-center gap-2"
@@ -322,10 +325,13 @@ export default function MedicareAdvantage() {
               </div>
 
               <div className="mt-6">
-                <button className="border-2 border-simpl-green hover:bg-simpl-green hover:text-white text-simpl-green px-6 py-3 rounded-xl font-bold transition-all duration-300 inline-flex items-center gap-2">
-                  Download Security One-Pager
+                <Link
+                  href="/privacy-policy"
+                  className="border-2 border-simpl-green hover:bg-simpl-green hover:text-white text-simpl-green px-6 py-3 rounded-xl font-bold transition-all duration-300 inline-flex items-center gap-2"
+                >
+                  Security & Privacy Details
                   <Download className="w-4 h-4" />
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -407,10 +413,13 @@ export default function MedicareAdvantage() {
               </div>
 
               <div className="mt-8">
-                <button className="bg-simpl-blue hover:bg-simpl-dark-blue text-white px-6 py-3 rounded-xl font-bold inline-flex items-center gap-2 btn-hover">
+                <Link
+                  href="/roi-analysis"
+                  className="bg-simpl-blue hover:bg-simpl-dark-blue text-white px-6 py-3 rounded-xl font-bold inline-flex items-center gap-2 btn-hover"
+                >
                   Run My ROI Estimate
                   <Calculator className="w-4 h-4" />
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -434,9 +443,12 @@ export default function MedicareAdvantage() {
               >
                 Schedule a Demo
               </Link>
-              <button className="border-2 border-white hover:bg-white hover:text-simpl-green text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 inline-block">
+              <Link
+                href="/book-demo"
+                className="border-2 border-white hover:bg-white hover:text-simpl-green text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 inline-block"
+              >
                 See Risk Adjustment in Action
-              </button>
+              </Link>
             </div>
           </div>
         </div>
