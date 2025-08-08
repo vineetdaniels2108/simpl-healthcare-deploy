@@ -7,25 +7,22 @@ export const dynamic = 'force-dynamic'
 export const revalidate = 0
 
 // Basic GET/OPTIONS handlers to aid health-checks and preflight requests
+const corsHeaders: Record<string, string> = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET,POST,OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+}
+
 export async function GET() {
   return NextResponse.json({ status: 'ok', route: '/api/support/ask', methods: ['POST'] }, {
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,POST,OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization'
-    }
+    headers: corsHeaders,
   })
 }
 
 export async function OPTIONS() {
   return new NextResponse(null, {
     status: 204,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,POST,OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-      'Access-Control-Max-Age': '86400'
-    }
+    headers: { ...corsHeaders, 'Access-Control-Max-Age': '86400' }
   })
 }
 
@@ -81,7 +78,7 @@ export async function POST(req: Request) {
     const original = (body?.question || '').toString()
     const question = normalizeQuery(original)
     if (!question) {
-      return NextResponse.json({ answer: 'Please provide a question.' }, { status: 400 })
+      return NextResponse.json({ answer: 'Please provide a question.' }, { status: 400, headers: corsHeaders })
     }
 
     const ranked = knowledgeBase
@@ -115,9 +112,9 @@ export async function POST(req: Request) {
         const intentLinks = knowledgeBase
           .filter((e) => intentIds.includes(e.id))
           .map((e) => ({ title: e.title, url: e.url }))
-        return NextResponse.json({ answer: fb.answer, links: intentLinks })
+        return NextResponse.json({ answer: fb.answer, links: intentLinks }, { headers: corsHeaders })
       }
-      return NextResponse.json(fb)
+      return NextResponse.json(fb, { headers: corsHeaders })
     }
 
     const context = ranked
@@ -173,7 +170,7 @@ export async function POST(req: Request) {
 
     if (!resp.ok) {
       const fb = buildFallbackSteps(question, top, ranked)
-      return NextResponse.json(fb, { status: 200 })
+      return NextResponse.json(fb, { status: 200, headers: corsHeaders })
     }
     const data = await resp.json()
     let answer = (
@@ -216,9 +213,9 @@ export async function POST(req: Request) {
         .map((e) => ({ title: e.title, url: e.url }))
     }
 
-    return NextResponse.json({ answer: answer || 'Unable to generate an answer right now.', links })
+    return NextResponse.json({ answer: answer || 'Unable to generate an answer right now.', links }, { headers: corsHeaders })
   } catch (err) {
-    return NextResponse.json({ answer: 'An error occurred. Please try again.' }, { status: 500 })
+    return NextResponse.json({ answer: 'An error occurred. Please try again.' }, { status: 500, headers: corsHeaders })
   }
 }
 
